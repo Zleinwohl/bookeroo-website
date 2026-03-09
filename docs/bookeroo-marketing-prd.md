@@ -157,3 +157,54 @@ demo bookings
 organic traffic
 SEO rankings
 conversion rate
+
+# 14. Component System
+
+The marketing site must be built using a reusable component architecture to ensure consistency, scalability, and maintainability.
+
+Core components should include:
+
+• Navbar
+• Footer
+• Hero section
+• Feature grid
+• Product screenshot panel
+• CTA section
+• Pricing table
+• FAQ accordion
+• Industry page template
+• Blog post template
+• Product feature page template
+
+Component goals:
+
+• maximize reuse across pages
+• maintain consistent design language
+• support rapid creation of SEO pages
+• simplify future expansion of the site
+
+All pages should be constructed using these reusable components rather than custom one-off layouts.
+
+# 15. Design Consistency Rules
+
+The entire website must follow a consistent visual system.
+
+All pages should share the same design language, including:
+
+• consistent spacing and layout grid
+• consistent card styles
+• consistent gradient usage
+• consistent typography scale
+• consistent CTA button styling
+• consistent screenshot framing
+• consistent animation style
+
+Design goals:
+
+• premium SaaS aesthetic
+• modern interface
+• clear visual hierarchy
+• high readability
+• strong conversion focus
+
+The site should feel cohesive across all pages and sections.

@@ -1,0 +1,35 @@
+---
+interface Props {
+  heading?: string;
+  subheading?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+const {
+  heading = "Ready to simplify your operations?",
+  subheading = "Join tour operators who run their entire business in one place.",
+  primaryLabel = "Book a Demo",
+  primaryHref = "/demo",
+  secondaryLabel = "See Pricing",
+  secondaryHref = "/pricing",
+} = Astro.props;
+---
+<section class="py-32 bg-zinc-950 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/30 via-transparent to-teal-950/20 pointer-events-none"></div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative">
+    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-100 leading-tight mb-6">
+      {heading}
+    </h2>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">{subheading}</p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href={primaryHref} class="bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-base">
+        {primaryLabel}
+      </a>
+      <a href={secondaryHref} class="border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-base">
+        {secondaryLabel}
+      </a>
+    </div>
+  </div>
+</section>

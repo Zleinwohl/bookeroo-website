@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const coreFeatures = [
+  { icon: '📋', title: 'Booking Management', description: 'Accept and manage bookings across all your tours. Track status, customer info, and payments.' },
+  { icon: '👥', title: 'Staff Scheduling', description: 'Build rosters and assign staff to tours. Get a clear view of who is working each day.' },
+  { icon: '📊', title: 'Financial Reporting', description: 'Revenue, payouts, refunds, and statements — all in one place, no spreadsheets required.' },
+  { icon: '⚙️', title: 'Resource Management', description: 'Track boats, vehicles, and equipment. Know what is available before you confirm a booking.' },
+  { icon: '📝', title: 'Digital Waivers', description: 'Collect signed waivers digitally before customers arrive. No paper, no admin.' },
+  { icon: '🎟️', title: 'Promotional Codes', description: 'Create discount codes and track how customers are using them.' },
+  { icon: '🗓️', title: 'Schedule Management', description: 'Set up tour schedules with recurring slots, capacity limits, and time windows.' },
+  { icon: '📱', title: 'Customer Booking Widget', description: 'Embed a booking widget on your website so customers can book directly.' },
+  { icon: '🟢', title: 'Live Operations View', description: 'See which tours are active, how full they are, and what is happening right now.' },
+];
+---
+<Layout title="Features — Bookeroo" description="Everything Bookeroo can do for your tour business.">
+  <PageHero
+    eyebrow="Features"
+    heading="Everything built for tour operators."
+    subheading="Bookeroo brings together the tools you actually need — nothing more, nothing less."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Core features"
+        heading="All the tools. One platform."
+        subheading="Designed to replace the mess of spreadsheets, group chats, and disconnected software."
+      />
+      <FeatureGrid features={coreFeatures} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

@@ -1,9 +1,241 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import ProductPanel from '../components/ProductPanel.astro';
+import CTASection from '../components/CTASection.astro';
+import IndustryCard from '../components/IndustryCard.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQ from '../components/FAQ.astro';
+
+const features = [
+  {
+    icon: '📋',
+    title: 'Booking Management',
+    description: 'Accept and manage bookings in real time. View confirmed, pending, and cancelled bookings at a glance.',
+  },
+  {
+    icon: '👥',
+    title: 'Staff Scheduling',
+    description: 'Assign guides and crew to tours. See who is working, when, and on which activity.',
+  },
+  {
+    icon: '📊',
+    title: 'Financial Reporting',
+    description: 'Track revenue, payouts, and refunds. Export statements and manage your finances without spreadsheets.',
+  },
+  {
+    icon: '🗓️',
+    title: 'Schedule Management',
+    description: 'Set up recurring schedules for all your tours. Manage capacity and availability in one calendar.',
+  },
+  {
+    icon: '⚙️',
+    title: 'Resource Tracking',
+    description: 'Manage boats, vehicles, equipment, and other physical resources to keep operations running smoothly.',
+  },
+  {
+    icon: '📝',
+    title: 'Digital Waivers',
+    description: 'Collect customer waivers digitally before arrival. No paper, no admin hassle.',
+  },
+];
+
+const industries = [
+  { title: 'Boat Tours', description: 'Manage vessel schedules, crew, and passenger bookings.', href: '/industries/boat-tours', icon: '⛵' },
+  { title: 'Escape Rooms', description: 'Run multiple rooms, sessions, and staff rosters with ease.', href: '/industries/escape-rooms', icon: '🔐' },
+  { title: 'Jet Ski Rentals', description: 'Track equipment availability and rental bookings in real time.', href: '/industries/jet-ski-rentals', icon: '🌊' },
+  { title: 'Walking Tours', description: 'Manage guide schedules and group bookings across multiple routes.', href: '/industries/walking-tours', icon: '🗺️' },
+  { title: 'Adventure Tours', description: 'ATV, parasailing, charter — all your activities in one dashboard.', href: '/industries/adventure-tours', icon: '🏔️' },
+  { title: 'Charter Companies', description: 'Coordinate bookings, crew, and vessel assignments from one place.', href: '/industries/charter', icon: '🚢' },
+];
 ---
 
-<Layout>
-  <h1 class="text-6xl font-bold text-blue-600 mt-20 ml-10">
-    Tailwind is working!
-  </h1>
+<Layout title="Bookeroo — Run Your Entire Tour Business in One Place">
+
+  <!-- HERO -->
+  <section class="relative bg-zinc-950 pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/40 via-zinc-950 to-teal-950/20 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium px-3 py-1.5 rounded-full mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          Built for tour operators
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-semibold tracking-tight text-zinc-100 leading-[1.05] mb-6">
+          Run your entire<br />
+          <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">tour business</span><br />
+          in one place.
+        </h1>
+
+        <p class="text-xl text-zinc-400 leading-relaxed mb-10 max-w-xl">
+          Bookeroo makes booking management, staff scheduling, and financial tracking simple — so you can focus on running great experiences.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/demo" class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-7 py-3.5 rounded-lg transition-colors text-base">
+            Book a Demo
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+          <a href="/product" class="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-7 py-3.5 rounded-lg transition-colors text-base">
+            See how it works
+          </a>
+        </div>
+
+        <p class="mt-6 text-sm text-zinc-600">No credit card required. Setup in under a day.</p>
+      </div>
+
+      <!-- Hero mock UI -->
+      <div class="mt-16 md:mt-20 max-w-2xl">
+        <ProductPanel variant="bookings" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="The problem"
+        heading="Running a tour business is harder than it should be."
+        subheading="Most operators are juggling spreadsheets, group chats, and multiple tools just to get through the week."
+        light={true}
+      />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: '😩', heading: 'Too many tools', body: 'Booking software, scheduling apps, accounting tools — none of them talk to each other.' },
+          { icon: '📱', heading: 'Manual everything', body: 'Staff rosters in WhatsApp. Finances in spreadsheets. Bookings in email. It breaks under pressure.' },
+          { icon: '💸', heading: 'Software that costs too much', body: 'FareHarbor and Peek Pro are built for large operators. Small and mid-size businesses pay for features they don\'t need.' },
+        ].map(item => (
+          <div class="bg-zinc-50 border border-zinc-200 rounded-xl p-6">
+            <div class="text-2xl mb-3">{item.icon}</div>
+            <h3 class="font-semibold text-zinc-900 mb-2">{item.heading}</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="py-24 bg-zinc-950 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-zinc-900/50 to-transparent pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <SectionHeader
+        eyebrow="The solution"
+        heading="One platform. Everything you need."
+        subheading="Bookeroo replaces the chaos with a single clean dashboard. Bookings, staff, finances, and operations — all connected."
+      />
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          {[
+            { icon: '✓', text: 'Accept bookings and manage customer details in one place.' },
+            { icon: '✓', text: 'Schedule staff and assign them to tours in seconds.' },
+            { icon: '✓', text: 'Track revenue, payouts, and refunds without spreadsheets.' },
+            { icon: '✓', text: 'Manage physical resources like boats and equipment.' },
+            { icon: '✓', text: 'Collect digital waivers before customers arrive.' },
+          ].map(item => (
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <p class="text-zinc-300 leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+        <ProductPanel variant="operations" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-24 bg-zinc-950 border-t border-zinc-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Features"
+        heading="Everything you need to run your operation."
+        subheading="Designed for how tour operators actually work."
+      />
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+
+  <!-- PRODUCT SCREENSHOT SECTION -->
+  <section class="py-24 bg-zinc-900/30 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="The dashboard"
+        heading="Clear visibility into every part of your business."
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-semibold text-zinc-200 mb-2">Booking Management</h3>
+          <p class="text-sm text-zinc-500 mb-5 leading-relaxed">See all bookings at a glance. Track status, customer info, and revenue in real time.</p>
+          <ProductPanel variant="bookings" />
+        </div>
+        <div>
+          <h3 class="font-semibold text-zinc-200 mb-2">Financial Reporting</h3>
+          <p class="text-sm text-zinc-500 mb-5 leading-relaxed">Track revenue and payouts without spreadsheets. Export statements when you need them.</p>
+          <ProductPanel variant="financials" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="py-24 bg-zinc-950 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Industries"
+        heading="Built for every type of experience business."
+        subheading="Whether you run boat tours, escape rooms, or adventure activities — Bookeroo fits how you work."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {industries.map(industry => (
+          <IndustryCard
+            title={industry.title}
+            description={industry.description}
+            href={industry.href}
+            icon={industry.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING PREVIEW -->
+  <section class="py-24 bg-zinc-950 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Pricing"
+        heading="Simple, honest pricing."
+        subheading="No hidden fees. No long-term contracts. Cancel any time."
+        centered={true}
+      />
+      <PricingTable />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-zinc-950 border-t border-zinc-800/50">
+    <div class="max-w-3xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="FAQ"
+        heading="Common questions."
+        centered={true}
+      />
+      <FAQ />
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <CTASection />
+
 </Layout>

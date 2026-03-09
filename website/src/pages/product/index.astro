@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+
+const sections = [
+  {
+    eyebrow: 'Booking Management',
+    heading: 'Every booking, in one place.',
+    body: 'Accept reservations, manage customer details, send confirmations, and track status across all your tours and activities.',
+    href: '/product/bookings',
+    variant: 'bookings',
+  },
+  {
+    eyebrow: 'Staff Scheduling',
+    heading: 'Build and manage your team schedule.',
+    body: 'Assign guides and crew to tours. Set shift times and see at a glance who is working each day.',
+    href: '/product/staff-scheduling',
+    variant: 'schedule',
+  },
+  {
+    eyebrow: 'Financial Reporting',
+    heading: 'Know your numbers without spreadsheets.',
+    body: 'Track gross revenue, refunds, payouts, and platform fees. Export statements and get a clear picture of your finances.',
+    href: '/product/financials',
+    variant: 'financials',
+  },
+  {
+    eyebrow: 'Operations Dashboard',
+    heading: 'Full visibility into live operations.',
+    body: 'See what is happening right now — which tours are running, which staff are on duty, and how your resources are deployed.',
+    href: '/product/operations-dashboard',
+    variant: 'operations',
+  },
+];
+---
+<Layout title="Product — Bookeroo" description="Explore everything Bookeroo can do for your tour business.">
+  <PageHero
+    eyebrow="Product"
+    heading="Everything you need to run your tour business."
+    subheading="A complete operating platform built for tour operators, activity providers, and experience businesses."
+  />
+
+  <div class="bg-zinc-950">
+    {sections.map((section, i) => (
+      <section class:list={["py-24 border-b border-zinc-800/50", i % 2 === 1 && "bg-zinc-900/30"]}>
+        <div class="max-w-6xl mx-auto px-6">
+          <div class:list={["grid grid-cols-1 lg:grid-cols-2 gap-12 items-center", i % 2 === 1 && ""]}>
+            <div class:list={[i % 2 === 1 && "lg:order-2"]}>
+              <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">{section.eyebrow}</p>
+              <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">{section.heading}</h2>
+              <p class="text-lg text-zinc-400 leading-relaxed mb-8">{section.body}</p>
+              <a href={section.href} class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">
+                Learn more
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                </svg>
+              </a>
+            </div>
+            <div class:list={[i % 2 === 1 && "lg:order-1"]}>
+              <ProductPanel variant={section.variant as any} />
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <CTASection />
+</Layout>

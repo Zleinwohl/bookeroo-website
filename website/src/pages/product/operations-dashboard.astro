@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '🟢', title: 'Live tour status', description: 'See which tours are active, boarding, or upcoming at any moment.' },
+  { icon: '📦', title: 'Resource management', description: 'Track boats, vehicles, and equipment availability in real time.' },
+  { icon: '📋', title: 'Today\'s manifest', description: 'A clean list of every tour and booking running today.' },
+  { icon: '👥', title: 'Staff on duty', description: 'See how many staff are working and which tours they are assigned to.' },
+  { icon: '📊', title: 'Capacity overview', description: 'Know which tours are filling up and where you still have availability.' },
+  { icon: '⚡', title: 'Real-time updates', description: 'The dashboard reflects your live operation as it happens.' },
+];
+---
+<Layout title="Operations Dashboard — Bookeroo" description="Live operational visibility for your entire tour business.">
+  <PageHero
+    eyebrow="Operations Dashboard"
+    heading="Full visibility into your live operation."
+    subheading="See what is happening right now — which tours are running, which staff are on duty, and how your resources are deployed."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Operations</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Stop guessing. Start knowing.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">The operations dashboard gives you a real-time view of your entire business — which tours are running, how full they are, and who is handling what.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ProductPanel variant="operations" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

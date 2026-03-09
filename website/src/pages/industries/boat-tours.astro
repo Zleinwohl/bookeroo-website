@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '📋', title: 'Booking management', description: 'Accept and manage all your boat tour bookings in one dashboard.' },
+  { icon: '⛵', title: 'Vessel scheduling', description: 'Assign tours to specific vessels and track availability across your fleet.' },
+  { icon: '👥', title: 'Crew assignment', description: 'Assign captains and crew to each departure. See your roster at a glance.' },
+  { icon: '📊', title: 'Revenue tracking', description: 'See earnings per tour, per vessel, and across your whole operation.' },
+  { icon: '📝', title: 'Digital waivers', description: 'Collect liability waivers digitally before passengers board.' },
+  { icon: '🗓️', title: 'Departure scheduling', description: 'Set up recurring departure times and manage capacity for each slot.' },
+];
+---
+<Layout title="Boat Tour Booking Software — Bookeroo" description="Manage boat tour bookings, crew, and vessel schedules with Bookeroo.">
+  <PageHero
+    eyebrow="Boat Tours"
+    heading="Booking software built for boat tour operators."
+    subheading="Manage departures, crew, vessels, and bookings — all from one clean dashboard."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Built for your operation</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Run your boat tour business from one place.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">From the moment a customer books to the moment they board, Bookeroo keeps everything organised — bookings, crew, vessels, and revenue.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ProductPanel variant="bookings" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

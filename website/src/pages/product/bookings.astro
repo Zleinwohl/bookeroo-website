@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '📋', title: 'Real-time booking list', description: 'View all bookings as they come in. Filter by status, date, or tour.' },
+  { icon: '✉️', title: 'Automatic confirmations', description: 'Customers receive booking confirmation emails automatically.' },
+  { icon: '🔄', title: 'Status management', description: 'Mark bookings as confirmed, pending, or cancelled with one click.' },
+  { icon: '👤', title: 'Customer records', description: 'Store customer details alongside their bookings for easy reference.' },
+  { icon: '💳', title: 'Payment tracking', description: 'See what has been paid and what is outstanding.' },
+  { icon: '📅', title: 'Calendar view', description: 'View bookings on a day or week calendar to understand your schedule.' },
+];
+---
+<Layout title="Booking Management — Bookeroo" description="Accept and manage bookings across all your tours and activities.">
+  <PageHero
+    eyebrow="Booking Management"
+    heading="Every booking, organised and visible."
+    subheading="Accept reservations, track customer details, and manage booking status — all from one clean dashboard."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">How it works</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Stop managing bookings from your inbox.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">When a booking comes in, it appears instantly in your dashboard. You can see who booked, which tour, how many people, and the payment status — without digging through emails.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ProductPanel variant="bookings" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

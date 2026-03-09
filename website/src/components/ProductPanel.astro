@@ -1,0 +1,207 @@
+---
+interface Props {
+  variant?: 'bookings' | 'schedule' | 'financials' | 'operations';
+  title?: string;
+}
+const { variant = 'bookings', title } = Astro.props;
+---
+
+{variant === 'bookings' && (
+  <div class="bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl">
+    <div class="px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+      </div>
+      <span class="text-xs text-zinc-500 font-medium">Bookings</span>
+      <div class="w-16"></div>
+    </div>
+    <div class="p-5">
+      <div class="grid grid-cols-3 gap-3 mb-5">
+        {[
+          { label: 'Today', value: '14', color: 'text-emerald-400' },
+          { label: 'This Week', value: '87', color: 'text-zinc-100' },
+          { label: 'Revenue', value: '$4,820', color: 'text-zinc-100' },
+        ].map(stat => (
+          <div class="bg-zinc-800 rounded-lg p-3">
+            <p class="text-xs text-zinc-500 mb-1">{stat.label}</p>
+            <p class:list={["text-lg font-semibold font-mono", stat.color]}>{stat.value}</p>
+          </div>
+        ))}
+      </div>
+      <div class="space-y-2">
+        {[
+          { name: 'Sarah M.', tour: 'Sunset Boat Tour', time: '2:00 PM', amount: '$120', status: 'confirmed' },
+          { name: 'James K.', tour: 'Island Snorkel Trip', time: '3:30 PM', amount: '$95', status: 'confirmed' },
+          { name: 'Lisa R.', tour: 'Sunset Boat Tour', time: '5:00 PM', amount: '$240', status: 'pending' },
+          { name: 'Tom B.', tour: 'Kayak Adventure', time: '9:00 AM', amount: '$80', status: 'confirmed' },
+        ].map(booking => (
+          <div class="flex items-center gap-3 bg-zinc-800/50 rounded-lg px-3 py-2.5 hover:bg-zinc-800 transition-colors cursor-pointer">
+            <div class="w-7 h-7 rounded-md bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs font-bold flex-shrink-0">
+              {booking.name[0]}
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-zinc-200 truncate">{booking.name}</p>
+              <p class="text-xs text-zinc-500 truncate">{booking.tour}</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <p class="text-xs font-mono text-zinc-300">{booking.amount}</p>
+              <p class="text-xs text-zinc-600">{booking.time}</p>
+            </div>
+            <div class:list={[
+              "text-xs px-2 py-0.5 rounded-full font-medium flex-shrink-0",
+              booking.status === 'confirmed' ? 'bg-emerald-500/15 text-emerald-400' : 'bg-amber-500/15 text-amber-400'
+            ]}>
+              {booking.status}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+{variant === 'schedule' && (
+  <div class="bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl">
+    <div class="px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+      </div>
+      <span class="text-xs text-zinc-500 font-medium">Staff Schedule</span>
+      <div class="w-16"></div>
+    </div>
+    <div class="p-5">
+      <div class="grid grid-cols-7 gap-1 mb-4">
+        {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
+          <div class="text-center text-xs text-zinc-600 font-medium py-1">{day}</div>
+        ))}
+        {Array.from({length: 7}, (_, i) => i + 10).map(date => (
+          <div class:list={[
+            "text-center text-xs rounded-md py-1.5 font-mono",
+            date === 14 ? "bg-emerald-500 text-white font-bold" : "text-zinc-400"
+          ]}>
+            {date}
+          </div>
+        ))}
+      </div>
+      <div class="space-y-2">
+        {[
+          { name: 'Jake T.', role: 'Guide', shift: '8am – 4pm', tours: 3, color: 'bg-blue-500/20 text-blue-400' },
+          { name: 'Maria S.', role: 'Captain', shift: '10am – 6pm', tours: 2, color: 'bg-purple-500/20 text-purple-400' },
+          { name: 'Chris L.', role: 'Guide', shift: '12pm – 8pm', tours: 4, color: 'bg-amber-500/20 text-amber-400' },
+          { name: 'Ana P.', role: 'Support', shift: '9am – 3pm', tours: 0, color: 'bg-rose-500/20 text-rose-400' },
+        ].map(staff => (
+          <div class="flex items-center gap-3 bg-zinc-800/50 rounded-lg px-3 py-2.5">
+            <div class:list={["w-7 h-7 rounded-md flex items-center justify-center text-xs font-bold flex-shrink-0", staff.color]}>
+              {staff.name[0]}
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-zinc-200">{staff.name}</p>
+              <p class="text-xs text-zinc-500">{staff.role} · {staff.shift}</p>
+            </div>
+            <div class="text-xs text-zinc-500 flex-shrink-0">{staff.tours} tours</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+{variant === 'financials' && (
+  <div class="bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl">
+    <div class="px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+      </div>
+      <span class="text-xs text-zinc-500 font-medium">Financials</span>
+      <div class="w-16"></div>
+    </div>
+    <div class="p-5">
+      <div class="bg-zinc-800 rounded-xl p-4 mb-4">
+        <p class="text-xs text-zinc-500 uppercase tracking-wider mb-1">Monthly Revenue</p>
+        <p class="text-3xl font-mono font-semibold text-zinc-100">$18,420</p>
+        <p class="text-xs text-emerald-400 mt-1">↑ 12% vs last month</p>
+      </div>
+      <div class="mb-4">
+        <div class="flex items-end gap-1 h-16">
+          {[40, 55, 45, 70, 60, 85, 75, 90, 80, 95, 88, 100].map((h, i) => (
+            <div class:list={[
+              "flex-1 rounded-sm transition-opacity",
+              i === 11 ? "bg-emerald-500" : "bg-zinc-700"
+            ]} style={`height: ${h}%`}></div>
+          ))}
+        </div>
+        <div class="flex justify-between mt-1">
+          <span class="text-xs text-zinc-600">Jan</span>
+          <span class="text-xs text-zinc-600">Dec</span>
+        </div>
+      </div>
+      <div class="space-y-2">
+        {[
+          { label: 'Gross Revenue', value: '$18,420', color: 'text-zinc-100' },
+          { label: 'Refunds', value: '-$340', color: 'text-rose-400' },
+          { label: 'Platform Fee', value: '-$368', color: 'text-zinc-500' },
+          { label: 'Net Payout', value: '$17,712', color: 'text-emerald-400' },
+        ].map(row => (
+          <div class="flex justify-between items-center py-1.5 border-b border-zinc-800/50 last:border-0">
+            <span class="text-xs text-zinc-500">{row.label}</span>
+            <span class:list={["text-xs font-mono font-semibold", row.color]}>{row.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+{variant === 'operations' && (
+  <div class="bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl">
+    <div class="px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+      </div>
+      <span class="text-xs text-zinc-500 font-medium">Operations</span>
+      <div class="w-16"></div>
+    </div>
+    <div class="p-5">
+      <div class="grid grid-cols-2 gap-3 mb-4">
+        {[
+          { label: 'Active Tours', value: '6', color: 'text-emerald-400' },
+          { label: 'Staff On Duty', value: '8', color: 'text-blue-400' },
+          { label: 'Resources', value: '4/5', color: 'text-zinc-100' },
+          { label: 'Capacity', value: '87%', color: 'text-amber-400' },
+        ].map(stat => (
+          <div class="bg-zinc-800 rounded-lg p-3">
+            <p class="text-xs text-zinc-500 mb-1">{stat.label}</p>
+            <p class:list={["text-xl font-semibold font-mono", stat.color]}>{stat.value}</p>
+          </div>
+        ))}
+      </div>
+      <div class="space-y-2">
+        {[
+          { name: 'Sunset Boat Tour', time: '2:00 PM', capacity: '12/14', status: 'active' },
+          { name: 'Snorkel Adventure', time: '3:30 PM', capacity: '8/10', status: 'boarding' },
+          { name: 'Evening Cruise', time: '6:00 PM', capacity: '5/20', status: 'upcoming' },
+        ].map(tour => (
+          <div class="flex items-center gap-3 bg-zinc-800/50 rounded-lg px-3 py-2.5">
+            <div class:list={[
+              "w-2 h-2 rounded-full flex-shrink-0",
+              tour.status === 'active' ? 'bg-emerald-400' : tour.status === 'boarding' ? 'bg-amber-400' : 'bg-zinc-600'
+            ]}></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-zinc-200 truncate">{tour.name}</p>
+              <p class="text-xs text-zinc-600">{tour.time}</p>
+            </div>
+            <span class="text-xs font-mono text-zinc-400 flex-shrink-0">{tour.capacity}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}

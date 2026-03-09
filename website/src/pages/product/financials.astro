@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '💰', title: 'Revenue tracking', description: 'See total revenue across all tours and activities in real time.' },
+  { icon: '📤', title: 'Payout reporting', description: 'Know exactly what you will receive and when.' },
+  { icon: '🧾', title: 'Statements', description: 'Generate and export monthly statements for your records.' },
+  { icon: '📉', title: 'Refund management', description: 'Track refunds alongside revenue for a clean financial picture.' },
+  { icon: '🏷️', title: 'Promotional codes', description: 'Create and track discount codes. See how many times each code was used.' },
+  { icon: '📋', title: 'Tax reporting', description: 'Get tax-ready summaries to simplify end-of-year reporting.' },
+];
+---
+<Layout title="Financial Reporting — Bookeroo" description="Track revenue, payouts, and refunds without spreadsheets.">
+  <PageHero
+    eyebrow="Financial Reporting"
+    heading="Know your numbers without the spreadsheets."
+    subheading="Track revenue, payouts, and refunds in one place. Get clear financial reporting built for operators."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Financials</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Clear visibility into your revenue.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Bookeroo shows you your gross revenue, net payout, and refunds side by side — so you always know where your money stands, without touching a spreadsheet.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ProductPanel variant="financials" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

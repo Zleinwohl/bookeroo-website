@@ -1,0 +1,95 @@
+---
+const plans = [
+  {
+    name: 'Starter',
+    price: '$49',
+    period: '/month',
+    description: 'Perfect for small operators just getting started.',
+    features: [
+      'Up to 100 bookings/month',
+      'Booking management',
+      'Customer notifications',
+      'Basic financial reports',
+      'Email support',
+    ],
+    cta: 'Get started',
+    href: '/demo',
+    highlight: false,
+  },
+  {
+    name: 'Growth',
+    price: '$99',
+    period: '/month',
+    description: 'For growing operators managing a full team.',
+    features: [
+      'Unlimited bookings',
+      'Staff scheduling',
+      'Resource management',
+      'Full financial reporting',
+      'Waiver management',
+      'Priority support',
+    ],
+    cta: 'Book a Demo',
+    href: '/demo',
+    highlight: true,
+  },
+  {
+    name: 'Scale',
+    price: 'Custom',
+    period: '',
+    description: 'For multi-location operators with advanced needs.',
+    features: [
+      'Everything in Growth',
+      'Multi-location support',
+      'Custom integrations',
+      'Dedicated onboarding',
+      'Account manager',
+    ],
+    cta: 'Contact us',
+    href: '/demo',
+    highlight: false,
+  },
+];
+---
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {plans.map(plan => (
+    <div class:list={[
+      "relative rounded-2xl p-8 border flex flex-col transition-all",
+      plan.highlight
+        ? "bg-zinc-900 border-emerald-500/50 shadow-xl shadow-emerald-950/30"
+        : "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
+    ]}>
+      {plan.highlight && (
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="bg-emerald-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>
+        </div>
+      )}
+      <div class="mb-6">
+        <h3 class="font-semibold text-zinc-100 mb-2">{plan.name}</h3>
+        <div class="flex items-baseline gap-1">
+          <span class="text-4xl font-bold text-zinc-100">{plan.price}</span>
+          <span class="text-zinc-500 text-sm">{plan.period}</span>
+        </div>
+        <p class="text-sm text-zinc-500 mt-3 leading-relaxed">{plan.description}</p>
+      </div>
+      <ul class="space-y-3 mb-8 flex-1">
+        {plan.features.map(feature => (
+          <li class="flex items-start gap-2.5">
+            <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span class="text-sm text-zinc-400">{feature}</span>
+          </li>
+        ))}
+      </ul>
+      <a href={plan.href} class:list={[
+        "block text-center font-medium py-3 rounded-lg transition-colors text-sm",
+        plan.highlight
+          ? "bg-emerald-500 hover:bg-emerald-400 text-white"
+          : "border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white"
+      ]}>
+        {plan.cta}
+      </a>
+    </div>
+  ))}
+</div>

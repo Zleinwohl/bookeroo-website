@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const posts = [
+  { title: 'How to reduce no-shows for your tour business', date: 'Jan 2025', tag: 'Operations', excerpt: 'Practical steps to reduce last-minute cancellations and no-shows without frustrating your customers.', href: '#' },
+  { title: 'The real cost of managing bookings in spreadsheets', date: 'Jan 2025', tag: 'Insight', excerpt: 'A look at what manual booking management is actually costing operators in time and money.', href: '#' },
+  { title: '5 things to look for in booking software for tour operators', date: 'Dec 2024', tag: 'Buying Guide', excerpt: 'Not all booking software is built for operators. Here is what to look for before you commit.', href: '#' },
+];
+---
+<Layout title="Blog — Bookeroo" description="Insights and guides for tour operators and experience businesses.">
+  <PageHero
+    eyebrow="Blog"
+    heading="Insights for tour operators."
+    subheading="Practical articles on running your tour business more effectively."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="space-y-5">
+        {posts.map(post => (
+          <a href={post.href} class="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-600 rounded-xl p-7 transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-md">{post.tag}</span>
+              <span class="text-xs text-zinc-600">{post.date}</span>
+            </div>
+            <h2 class="text-xl font-semibold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors leading-snug">{post.title}</h2>
+            <p class="text-sm text-zinc-500 leading-relaxed">{post.excerpt}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</Layout>

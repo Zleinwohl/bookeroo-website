@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '📋', title: 'Session bookings', description: 'Manage bookings for all your rooms and sessions from one dashboard.' },
+  { icon: '🔐', title: 'Room scheduling', description: 'Set availability per room and prevent double-bookings automatically.' },
+  { icon: '👥', title: 'Staff rostering', description: 'Assign game masters and staff to sessions across your schedule.' },
+  { icon: '📊', title: 'Revenue by room', description: 'Track how each room is performing and where your revenue is coming from.' },
+  { icon: '🎟️', title: 'Promotional codes', description: 'Create group discount codes and track redemptions.' },
+  { icon: '⚡', title: 'Capacity management', description: 'Set minimum and maximum group sizes per room and session type.' },
+];
+---
+<Layout title="Escape Room Booking Software — Bookeroo" description="Manage escape room bookings, sessions, and staff with Bookeroo.">
+  <PageHero
+    eyebrow="Escape Rooms"
+    heading="Booking software built for escape room operators."
+    subheading="Manage rooms, sessions, staff, and revenue — all in one place."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Built for escape rooms</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Stop managing sessions in spreadsheets.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Bookeroo gives escape room operators a clean system for managing bookings, scheduling staff, and tracking revenue — without the manual admin.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ProductPanel variant="operations" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ProductPanel from '../../components/ProductPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '👥', title: 'Staff roster', description: 'Add your team and assign roles — guides, captains, support staff.' },
+  { icon: '📅', title: 'Shift scheduling', description: 'Set shift hours and assign staff to specific tours and time slots.' },
+  { icon: '🔍', title: 'Daily view', description: 'See the full day at a glance — who is on, what they are running, and when.' },
+  { icon: '⚡', title: 'Quick reassignment', description: 'Drag and reassign staff when plans change.' },
+  { icon: '📊', title: 'Workload visibility', description: 'Understand how many tours each staff member is handling across the week.' },
+  { icon: '🔔', title: 'Schedule clarity', description: 'No more confusion about who is working. Everyone is on the same page.' },
+];
+---
+<Layout title="Staff Scheduling — Bookeroo" description="Schedule your guides, captains, and crew with ease.">
+  <PageHero
+    eyebrow="Staff Scheduling"
+    heading="Schedule your team without the chaos."
+    subheading="Build and manage staff rosters, assign guides to tours, and get full visibility into your team's workload."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Staff scheduling</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">No more WhatsApp rosters.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Assign guides and crew to tours directly in Bookeroo. See who is working each day and quickly reassign when plans change.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ProductPanel variant="schedule" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

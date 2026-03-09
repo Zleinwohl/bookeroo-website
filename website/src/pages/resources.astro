@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const guides = [
+  { title: 'How to run a tour business', description: 'A practical guide to operations, scheduling, and customer experience.', tag: 'Guide', href: '#' },
+  { title: 'Tour scheduling best practices', description: 'How to set up your schedule to maximise bookings and reduce no-shows.', tag: 'Guide', href: '#' },
+  { title: 'Managing tour staff effectively', description: 'Tips for rostering, communication, and keeping your team organised.', tag: 'Guide', href: '#' },
+  { title: 'Bookeroo vs FareHarbor', description: 'A feature-by-feature comparison of the two platforms.', tag: 'Comparison', href: '#' },
+  { title: 'Bookeroo vs Peek Pro', description: 'Which platform is right for your size of business?', tag: 'Comparison', href: '#' },
+  { title: 'Setting up your first tour on Bookeroo', description: 'A step-by-step walkthrough for new operators.', tag: 'Tutorial', href: '#' },
+];
+---
+<Layout title="Resources — Bookeroo" description="Guides, tutorials, and comparisons for tour operators.">
+  <PageHero
+    eyebrow="Resources"
+    heading="Everything you need to run a better tour business."
+    subheading="Practical guides, tutorials, and comparisons to help operators at every stage."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Guides & Articles"
+        heading="Operator resources"
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {guides.map(guide => (
+          <a href={guide.href} class="group bg-zinc-900 border border-zinc-800 hover:border-zinc-600 rounded-xl p-6 transition-all hover:-translate-y-1">
+            <div class="mb-4">
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-md">{guide.tag}</span>
+            </div>
+            <h3 class="font-semibold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors leading-snug">{guide.title}</h3>
+            <p class="text-sm text-zinc-500 leading-relaxed">{guide.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</Layout>

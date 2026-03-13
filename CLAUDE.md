@@ -290,3 +290,197 @@ This rule applies whenever Claude is asked to:
 This ensures that all public-facing messaging accurately reflects the real product.
 
 ---
+
+# Frontend Design Skill
+
+name: frontend-design
+description: Create distinctive, production-grade frontend interfaces with high design quality. Use this when building or modifying UI components or pages for the Bookeroo marketing website.
+stack: Astro + Tailwind (Tradewinds)
+
+This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.
+
+All UI implementations must be:
+
+• Production-ready
+• Visually distinctive
+• Cohesive with a clear aesthetic direction
+• Implemented as reusable Astro components
+
+The goal is to build a **high-quality SaaS marketing website**, not generic landing pages.
+
+---
+
+## Design Thinking
+
+Before building any UI component or page, Claude must reason through the following:
+
+**Purpose**
+- What problem does the interface solve?
+- Who is the user?
+
+**Tone**
+Choose a clear aesthetic direction such as:
+
+• brutally minimal
+• editorial / magazine
+• luxury refined
+• playful
+• industrial
+• retro-futuristic
+• organic / natural
+
+The design should commit fully to a direction rather than blending generic styles.
+
+**Constraints**
+
+The project uses:
+
+• Astro components (`.astro`)
+• Tailwind (Tradewinds)
+• Component-based architecture
+• Static marketing pages
+
+All designs must respect these constraints.
+
+**Differentiation**
+
+Every page should have a memorable visual identity.
+
+Ask:
+"What makes this page visually memorable?"
+
+---
+
+## Implementation Rules
+
+All UI must follow these rules:
+
+• Use reusable Astro components when possible
+• Avoid repeating layout code across pages
+• Prefer composition over monolithic page files
+• Maintain responsive mobile-first layouts
+• Use Tailwind utility classes consistently
+• Avoid inline styles when Tailwind utilities exist
+
+Do not introduce frameworks outside the existing stack.
+
+---
+
+## Frontend Aesthetic Guidelines
+
+### Typography
+
+Choose distinctive and intentional typography.
+
+Avoid default system aesthetics.
+
+Prefer pairings such as:
+
+• expressive display font for headings
+• refined readable font for body text
+
+Typography should create visual hierarchy and personality.
+
+---
+
+### Color & Theme
+
+Use a cohesive palette.
+
+Use CSS variables or Tailwind tokens for color consistency.
+
+Prefer:
+
+• strong dominant colors
+• sharp accents
+• intentional contrast
+
+Avoid timid evenly distributed palettes.
+
+---
+
+### Motion
+
+Animations should enhance user experience.
+
+Use:
+
+• CSS transitions
+• hover effects
+• staggered reveals
+• scroll-triggered animations
+
+Focus on impactful moments rather than excessive micro-interactions.
+
+---
+
+### Spatial Composition
+
+Layouts should feel intentional.
+
+Use techniques like:
+
+• asymmetry
+• overlapping elements
+• strong grid systems
+• generous whitespace
+• layered sections
+
+Avoid predictable template layouts.
+
+---
+
+### Background & Visual Depth
+
+Add atmosphere through:
+
+• gradient meshes
+• noise textures
+• subtle grain
+• layered backgrounds
+• shadows and elevation
+
+Avoid flat default sections when a richer design would improve the experience.
+
+---
+
+## Anti-Patterns to Avoid
+
+Never generate generic AI-looking designs such as:
+
+• default Tailwind layouts with minimal customization
+• predictable SaaS landing page structures
+• bland typography choices
+• generic gradient hero sections
+
+Each page should feel intentionally designed for the Bookeroo brand.
+
+---
+
+## Complexity Balance
+
+Match implementation complexity to the design vision.
+
+Minimalist designs should focus on:
+
+• precision
+• spacing
+• typography
+
+Maximalist designs may include:
+
+• animations
+• layered visuals
+• richer layout composition
+
+Elegance comes from executing the chosen aesthetic well.
+
+---
+
+Remember:
+
+Claude is capable of high-quality creative frontend work.
+
+Design with intention and avoid generic UI patterns.
+
+---

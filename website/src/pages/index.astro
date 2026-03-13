@@ -2,77 +2,95 @@
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
-import ProductPanel from '../components/ProductPanel.astro';
 import CTASection from '../components/CTASection.astro';
 import IndustryCard from '../components/IndustryCard.astro';
 import PricingTable from '../components/PricingTable.astro';
 import FAQ from '../components/FAQ.astro';
+import ScreenshotPanel from '../components/ScreenshotPanel.astro';
+import BookingsWidget from '../components/BookingsWidget.astro';
+import FinancialsWidget from '../components/FinancialsWidget.astro';
 
 const features = [
   {
     icon: '📋',
     title: 'Booking Management',
-    description: 'Accept and manage bookings in real time. View confirmed, pending, and cancelled bookings at a glance.',
+    description: 'See all bookings across every activity in one table. Filter by status, search by customer, and track what is confirmed, pending, or cancelled.',
+  },
+  {
+    icon: '🗓️',
+    title: 'Calendar & Scheduling',
+    description: 'View your full booking calendar by month. See which days are busy, how many bookings each date carries, and navigate easily between periods.',
   },
   {
     icon: '👥',
     title: 'Staff Scheduling',
-    description: 'Assign guides and crew to tours. See who is working, when, and on which activity.',
+    description: 'Assign guides and instructors to sessions. See your weekly roster at a glance, identify unstaffed sessions, and manage your team\'s schedule.',
+  },
+  {
+    icon: '⚙️',
+    title: 'Resource Management',
+    description: 'Track boats, jet skis, vehicles, and equipment. Define which resources each activity requires — Bookeroo handles the availability logic.',
   },
   {
     icon: '📊',
     title: 'Financial Reporting',
-    description: 'Track revenue, payouts, and refunds. Export statements and manage your finances without spreadsheets.',
-  },
-  {
-    icon: '🗓️',
-    title: 'Schedule Management',
-    description: 'Set up recurring schedules for all your tours. Manage capacity and availability in one calendar.',
-  },
-  {
-    icon: '⚙️',
-    title: 'Resource Tracking',
-    description: 'Manage boats, vehicles, equipment, and other physical resources to keep operations running smoothly.',
+    description: 'Track collected revenue, outstanding balances, Stripe payouts, refunds, and discounts. Export statements and tax reports when you need them.',
   },
   {
     icon: '📝',
     title: 'Digital Waivers',
-    description: 'Collect customer waivers digitally before arrival. No paper, no admin hassle.',
+    description: 'Create waiver templates linked to your activities. Guests sign digitally before they arrive. Track who has signed and who still needs to.',
+  },
+  {
+    icon: '👤',
+    title: 'Customer Management',
+    description: 'A full CRM for your guests — total bookings, total spent, last activity, and status. Keep a clean record of every customer relationship.',
+  },
+  {
+    icon: '🎟️',
+    title: 'Promotional Codes',
+    description: 'Create discount codes with percentage off, expiry dates, and usage tracking. See exactly how each promotion is performing.',
+  },
+  {
+    icon: '🏄',
+    title: 'Activity Management',
+    description: 'Manage your full activity catalog — set schedules, track bookings per activity, monitor revenue by activity type, and control availability.',
   },
 ];
 
 const industries = [
-  { title: 'Boat Tours', description: 'Manage vessel schedules, crew, and passenger bookings.', href: '/industries/boat-tours', icon: '⛵' },
-  { title: 'Escape Rooms', description: 'Run multiple rooms, sessions, and staff rosters with ease.', href: '/industries/escape-rooms', icon: '🔐' },
-  { title: 'Jet Ski Rentals', description: 'Track equipment availability and rental bookings in real time.', href: '/industries/jet-ski-rentals', icon: '🌊' },
-  { title: 'Walking Tours', description: 'Manage guide schedules and group bookings across multiple routes.', href: '/industries/walking-tours', icon: '🗺️' },
+  { title: 'Jet Ski Rentals', description: 'Track equipment availability, manage rental bookings, and schedule operators.', href: '/industries/jet-ski-rentals', icon: '🌊' },
+  { title: 'Boat Tours', description: 'Manage vessel schedules, crew assignments, and passenger bookings.', href: '/industries/boat-tours', icon: '⛵' },
+  { title: 'Escape Rooms', description: 'Run multiple rooms, time slots, and staff rosters with ease.', href: '/industries/escape-rooms', icon: '🔐' },
+  { title: 'Guided Tours', description: 'Manage guide schedules, group sizes, and multi-activity itineraries.', href: '/industries/guided-tours', icon: '🗺️' },
   { title: 'Adventure Tours', description: 'ATV, parasailing, charter — all your activities in one dashboard.', href: '/industries/adventure-tours', icon: '🏔️' },
-  { title: 'Charter Companies', description: 'Coordinate bookings, crew, and vessel assignments from one place.', href: '/industries/charter', icon: '🚢' },
+  { title: 'Water Sports', description: 'Buggies, karts, aqua activities — coordinate bookings and resources.', href: '/industries/boat-tours', icon: '🚤' },
 ];
 ---
 
-<Layout title="Bookeroo — Run Your Entire Tour Business in One Place">
+<Layout title="Bookeroo — Run Your Entire Experience Business in One Place">
 
   <!-- HERO -->
-  <section class="relative bg-zinc-950 pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+  <section class="relative bg-zinc-950 pt-16 pb-0 md:pt-24 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/40 via-zinc-950 to-teal-950/20 pointer-events-none"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/4 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-6xl mx-auto px-6 relative">
-      <div class="max-w-3xl">
+      <!-- Headlines -->
+      <div class="max-w-3xl mb-16">
         <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium px-3 py-1.5 rounded-full mb-8">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          Built for tour operators
+          Built for tour & activity operators
         </div>
 
         <h1 class="text-5xl md:text-7xl font-semibold tracking-tight text-zinc-100 leading-[1.05] mb-6">
           Run your entire<br />
-          <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">tour business</span><br />
+          <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">experience business</span><br />
           in one place.
         </h1>
 
-        <p class="text-xl text-zinc-400 leading-relaxed mb-10 max-w-xl">
-          Bookeroo makes booking management, staff scheduling, and financial tracking simple — so you can focus on running great experiences.
+        <p class="text-xl text-zinc-400 leading-relaxed mb-10 max-w-2xl">
+          Bookeroo is the operator dashboard for tour and activity businesses. Manage bookings, staff, resources, and revenue — all connected, all visible.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
@@ -82,7 +100,7 @@ const industries = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
             </svg>
           </a>
-          <a href="/product" class="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-7 py-3.5 rounded-lg transition-colors text-base">
+          <a href="/product-tour" class="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-7 py-3.5 rounded-lg transition-colors text-base">
             See how it works
           </a>
         </div>
@@ -90,9 +108,13 @@ const industries = [
         <p class="mt-6 text-sm text-zinc-600">No credit card required. Setup in under a day.</p>
       </div>
 
-      <!-- Hero mock UI -->
-      <div class="mt-16 md:mt-20 max-w-2xl">
-        <ProductPanel variant="bookings" />
+      <!-- Hero screenshot — real dashboard -->
+      <div class="relative">
+        <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none z-10"></div>
+        <ScreenshotPanel
+          src="/images/product/marketing/dashboard-overview-marketing.png"
+          alt="Bookeroo operator dashboard — showing KPI cards, Today's Manifest, upcoming sessions, and recent bookings"
+        />
       </div>
     </div>
   </section>
@@ -102,15 +124,15 @@ const industries = [
     <div class="max-w-6xl mx-auto px-6">
       <SectionHeader
         eyebrow="The problem"
-        heading="Running a tour business is harder than it should be."
+        heading="Running an experience business is harder than it should be."
         subheading="Most operators are juggling spreadsheets, group chats, and multiple tools just to get through the week."
         light={true}
       />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
-          { icon: '😩', heading: 'Too many tools', body: 'Booking software, scheduling apps, accounting tools — none of them talk to each other.' },
-          { icon: '📱', heading: 'Manual everything', body: 'Staff rosters in WhatsApp. Finances in spreadsheets. Bookings in email. It breaks under pressure.' },
-          { icon: '💸', heading: 'Software that costs too much', body: 'FareHarbor and Peek Pro are built for large operators. Small and mid-size businesses pay for features they don\'t need.' },
+          { icon: '😩', heading: 'Too many disconnected tools', body: 'Booking software, scheduling apps, accounting tools — none of them talk to each other. You spend your time transferring data instead of running tours.' },
+          { icon: '📱', heading: 'Manual operations', body: 'Staff rosters in WhatsApp. Revenue in spreadsheets. Bookings in email threads. It works until it doesn\'t — usually under pressure.' },
+          { icon: '💸', heading: 'Software that doesn\'t fit', body: 'Enterprise platforms are built for large operators with complex needs. Small and mid-size experience businesses end up paying for features they don\'t use.' },
         ].map(item => (
           <div class="bg-zinc-50 border border-zinc-200 rounded-xl p-6">
             <div class="text-2xl mb-3">{item.icon}</div>
@@ -122,70 +144,180 @@ const industries = [
     </div>
   </section>
 
-  <!-- SOLUTION -->
-  <section class="py-24 bg-zinc-950 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-zinc-900/50 to-transparent pointer-events-none"></div>
-    <div class="max-w-6xl mx-auto px-6 relative">
-      <SectionHeader
-        eyebrow="The solution"
-        heading="One platform. Everything you need."
-        subheading="Bookeroo replaces the chaos with a single clean dashboard. Bookings, staff, finances, and operations — all connected."
-      />
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
-          {[
-            { icon: '✓', text: 'Accept bookings and manage customer details in one place.' },
-            { icon: '✓', text: 'Schedule staff and assign them to tours in seconds.' },
-            { icon: '✓', text: 'Track revenue, payouts, and refunds without spreadsheets.' },
-            { icon: '✓', text: 'Manage physical resources like boats and equipment.' },
-            { icon: '✓', text: 'Collect digital waivers before customers arrive.' },
-          ].map(item => (
-            <div class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                </svg>
-              </div>
-              <p class="text-zinc-300 leading-relaxed">{item.text}</p>
-            </div>
-          ))}
+  <!-- OPERATOR WORKFLOW — alternating screenshot sections -->
+  <section class="bg-zinc-950 border-t border-zinc-900">
+
+    <!-- Bookings -->
+    <div class="py-24 border-b border-zinc-800/50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Booking Management</p>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Every booking, visible and organised.</h2>
+            <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+              All your bookings in one table — customer name, activity, date, tickets, amount, and status. Filter by confirmed, pending, or cancelled. Search by customer or ID. No more digging through email.
+            </p>
+            <ul class="space-y-3 mb-8">
+              {[
+                'Filter by Confirmed, Pending, or Cancelled',
+                'Search by customer name or booking ID',
+                'Track payment status per booking',
+                'Export your full booking history',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-zinc-400">
+                  <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/product/bookings" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">
+              Explore booking management
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </a>
+          </div>
+          <BookingsWidget />
         </div>
-        <ProductPanel variant="operations" />
       </div>
     </div>
+
+    <!-- Scheduling & Calendar -->
+    <div class="py-24 border-b border-zinc-800/50 bg-zinc-900/20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="lg:order-2">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Scheduling</p>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">See your full schedule at a glance.</h2>
+            <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+              A monthly calendar view shows exactly how busy each day is. Navigate by month, see booking density at a glance, and understand your schedule without hunting through lists.
+            </p>
+            <ul class="space-y-3 mb-8">
+              {[
+                'Monthly calendar with per-day booking counts',
+                'Navigate between months with prev / next',
+                'Today highlighted for quick orientation',
+                'Pair with staff scheduling for full operational control',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-zinc-400">
+                  <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/product/staff-scheduling" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">
+              Explore scheduling
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </a>
+          </div>
+          <div class="lg:order-1">
+            <ScreenshotPanel
+              src="/images/product/marketing/calendar-view-marketing.png"
+              alt="Bookeroo calendar view showing monthly schedule with per-day booking counts"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Staff & Resources -->
+    <div class="py-24 border-b border-zinc-800/50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Staff & Operations</p>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Know who is on and what they are covering.</h2>
+            <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+              A weekly staff view shows all your sessions and their coverage status. Green means staffed. Amber means a session still needs someone assigned. Switch to day view for a detailed look at individual sessions.
+            </p>
+            <ul class="space-y-3 mb-8">
+              {[
+                'Weekly and daily schedule views',
+                'Covered / Needs Staff status per session',
+                'Staff availability toggles per team member',
+                'Activity-type filters for focused views',
+                'Staffing requirement rules per activity',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-zinc-400">
+                  <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/product/staff-scheduling" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">
+              Explore staff management
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </a>
+          </div>
+          <ScreenshotPanel
+            src="/images/product/marketing/staff-scheduling-marketing.png"
+            alt="Bookeroo staff scheduling — weekly calendar showing sessions with Covered and Needs Staff status"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Financials -->
+    <div class="py-24 bg-zinc-900/20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="lg:order-2">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Financial Reporting</p>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Know your revenue without a spreadsheet.</h2>
+            <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+              Collected revenue, outstanding balances, Stripe payouts, cash flow breakdown, discount impact — all in one view. Filter by month, export statements and tax reports when you need them.
+            </p>
+            <ul class="space-y-3 mb-8">
+              {[
+                'Collected, outstanding, and projected revenue KPIs',
+                'Stripe payout tracking: in transit and pending',
+                'Cash flow: gross, discounts, refunds, net',
+                'Revenue by activity type',
+                'Monthly statements and tax reports with export',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-zinc-400">
+                  <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/product/financials" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">
+              Explore financial reporting
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </a>
+          </div>
+          <div class="lg:order-1">
+            <FinancialsWidget />
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- FEATURES -->
   <section class="py-24 bg-zinc-950 border-t border-zinc-900">
     <div class="max-w-6xl mx-auto px-6">
       <SectionHeader
-        eyebrow="Features"
-        heading="Everything you need to run your operation."
-        subheading="Designed for how tour operators actually work."
+        eyebrow="Everything included"
+        heading="The full platform."
+        subheading="Every module is built for how tour and activity operators actually work."
       />
       <FeatureGrid features={features} columns={3} />
-    </div>
-  </section>
-
-  <!-- PRODUCT SCREENSHOT SECTION -->
-  <section class="py-24 bg-zinc-900/30 border-t border-zinc-800/50">
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionHeader
-        eyebrow="The dashboard"
-        heading="Clear visibility into every part of your business."
-      />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h3 class="font-semibold text-zinc-200 mb-2">Booking Management</h3>
-          <p class="text-sm text-zinc-500 mb-5 leading-relaxed">See all bookings at a glance. Track status, customer info, and revenue in real time.</p>
-          <ProductPanel variant="bookings" />
-        </div>
-        <div>
-          <h3 class="font-semibold text-zinc-200 mb-2">Financial Reporting</h3>
-          <p class="text-sm text-zinc-500 mb-5 leading-relaxed">Track revenue and payouts without spreadsheets. Export statements when you need them.</p>
-          <ProductPanel variant="financials" />
-        </div>
-      </div>
     </div>
   </section>
 
@@ -194,8 +326,8 @@ const industries = [
     <div class="max-w-6xl mx-auto px-6">
       <SectionHeader
         eyebrow="Industries"
-        heading="Built for every type of experience business."
-        subheading="Whether you run boat tours, escape rooms, or adventure activities — Bookeroo fits how you work."
+        heading="Built for every kind of experience business."
+        subheading="Whether you run jet ski rentals, boat tours, guided hikes, or escape rooms — Bookeroo fits how you operate."
       />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {industries.map(industry => (
@@ -239,3 +371,4 @@ const industries = [
   <CTASection />
 
 </Layout>
+

@@ -1,0 +1,117 @@
+---
+// Interactive bookings widget grounded in real Bookeroo product data
+// 10 total bookings: Confirmed, Pending (2), Cancelled
+// Activities match real portal: Jet Ski + Aqua Kart, Buggy & Jet Ski, Aqua Splash Pack, Aqua Kart + Buggy
+---
+
+<div class="bookings-widget bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden shadow-2xl">
+  <!-- Header -->
+  <div class="px-5 py-3.5 border-b border-zinc-800 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+      </div>
+      <span class="text-xs text-zinc-500 font-medium">Bookings</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-xs text-zinc-500">10 total</span>
+      <button class="text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-md font-medium hover:bg-emerald-500/25 transition-colors">+ Add Booking</button>
+    </div>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="px-5 pt-3.5 flex items-center gap-1 border-b border-zinc-800 pb-0">
+    <button class="booking-tab active relative text-xs font-medium px-3 py-2 text-zinc-100 transition-all" data-filter="all">
+      All
+      <span class="ml-1.5 text-zinc-500">10</span>
+      <div class="absolute bottom-0 left-0 right-0 h-px bg-emerald-400"></div>
+    </button>
+    <button class="booking-tab relative text-xs font-medium px-3 py-2 text-zinc-500 hover:text-zinc-300 transition-all" data-filter="confirmed">
+      Confirmed
+      <span class="ml-1 bg-emerald-500/15 text-emerald-400 text-xs px-1.5 py-0.5 rounded-full">7</span>
+    </button>
+    <button class="booking-tab relative text-xs font-medium px-3 py-2 text-zinc-500 hover:text-zinc-300 transition-all" data-filter="pending">
+      Pending
+      <span class="ml-1 bg-amber-500/15 text-amber-400 text-xs px-1.5 py-0.5 rounded-full">2</span>
+    </button>
+    <button class="booking-tab relative text-xs font-medium px-3 py-2 text-zinc-500 hover:text-zinc-300 transition-all" data-filter="cancelled">
+      Cancelled
+      <span class="ml-1.5 text-zinc-500">1</span>
+    </button>
+  </div>
+
+  <!-- Table header -->
+  <div class="px-5 py-2 grid grid-cols-12 gap-2 border-b border-zinc-800/50">
+    <p class="col-span-1 text-xs text-zinc-600 font-medium">ID</p>
+    <p class="col-span-4 text-xs text-zinc-600 font-medium">Customer</p>
+    <p class="col-span-3 text-xs text-zinc-600 font-medium hidden sm:block">Activity</p>
+    <p class="col-span-2 text-xs text-zinc-600 font-medium text-right">Amount</p>
+    <p class="col-span-2 text-xs text-zinc-600 font-medium text-right">Status</p>
+  </div>
+
+  <!-- Booking rows -->
+  <div class="divide-y divide-zinc-800/50" id="bookings-list">
+    {[
+      { id: '#1042', name: 'Emma Clarke', activity: 'Jet Ski + Aqua Kart', amount: '$360', status: 'confirmed' },
+      { id: '#1041', name: 'James Torres', activity: 'Buggy & Jet Ski', amount: '$180', status: 'pending' },
+      { id: '#1040', name: 'Sofia Reyes', activity: 'Aqua Splash Pack', amount: '$390', status: 'confirmed' },
+      { id: '#1039', name: 'Marco Walsh', activity: 'Aqua Kart + Buggy', amount: '$340', status: 'cancelled' },
+      { id: '#1038', name: 'Lena Park', activity: 'Jet Ski + Aqua Kart', amount: '$720', status: 'confirmed' },
+      { id: '#1037', name: 'Carlos Vega', activity: 'Buggy & Jet Ski', amount: '$180', status: 'pending' },
+      { id: '#1036', name: 'Hana Scott', activity: 'Aqua Splash Pack', amount: '$130', status: 'confirmed' },
+    ].map(b => (
+      <div class="booking-row px-5 py-2.5 grid grid-cols-12 gap-2 items-center hover:bg-zinc-800/30 transition-colors cursor-default" data-status={b.status}>
+        <p class="col-span-1 text-xs font-mono text-zinc-500">{b.id}</p>
+        <p class="col-span-4 text-xs font-medium text-zinc-200 truncate">{b.name}</p>
+        <p class="col-span-3 text-xs text-zinc-500 truncate hidden sm:block">{b.activity}</p>
+        <p class="col-span-2 text-xs font-mono text-zinc-300 text-right">{b.amount}</p>
+        <div class="col-span-2 flex justify-end">
+          <span class:list={[
+            "text-xs px-2 py-0.5 rounded-full font-medium",
+            b.status === 'confirmed' ? 'bg-emerald-500/15 text-emerald-400' :
+            b.status === 'pending' ? 'bg-amber-500/15 text-amber-400' :
+            'bg-red-500/15 text-red-400'
+          ]}>
+            {b.status}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.booking-tab');
+  const rows = document.querySelectorAll('.booking-row');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active', 'text-zinc-100');
+        t.classList.add('text-zinc-500');
+        const indicator = t.querySelector('.absolute.bottom-0');
+        if (indicator) indicator.remove();
+      });
+
+      tab.classList.add('active', 'text-zinc-100');
+      tab.classList.remove('text-zinc-500');
+
+      // Add underline indicator
+      const indicator = document.createElement('div');
+      indicator.className = 'absolute bottom-0 left-0 right-0 h-px bg-emerald-400';
+      tab.appendChild(indicator);
+
+      const filter = tab.getAttribute('data-filter');
+      rows.forEach(row => {
+        const status = row.getAttribute('data-status');
+        if (filter === 'all' || status === filter) {
+          (row as HTMLElement).style.display = '';
+        } else {
+          (row as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

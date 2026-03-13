@@ -2,51 +2,77 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTASection from '../../components/CTASection.astro';
-import ProductPanel from '../../components/ProductPanel.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import DashboardWidget from '../../components/DashboardWidget.astro';
 
 const sections = [
   {
-    eyebrow: 'Booking Management',
-    heading: 'Every booking, in one place.',
-    body: 'Accept reservations, manage customer details, send confirmations, and track status across all your tours and activities.',
-    href: '/product/bookings',
-    variant: 'bookings',
+    eyebrow: 'Operations Dashboard',
+    heading: 'Your entire operation, at a glance.',
+    body: 'The Bookeroo dashboard shows everything that matters right now — KPI cards for revenue, bookings, avg. booking value, and capacity. Today\'s manifest with per-session guest status. Upcoming sessions with fill rates. Recent bookings. Stripe payout status.',
+    href: '/product/operations-dashboard',
+    screenshot: null, // uses DashboardWidget
+    widget: 'dashboard',
   },
   {
-    eyebrow: 'Staff Scheduling',
-    heading: 'Build and manage your team schedule.',
-    body: 'Assign guides and crew to tours. Set shift times and see at a glance who is working each day.',
+    eyebrow: 'Booking Management',
+    heading: 'Every booking, organised and visible.',
+    body: 'All bookings in one filterable table. Confirmed, pending, cancelled — status is always clear. Search by customer, filter by status, export when you need it. No more booking management in your inbox.',
+    href: '/product/bookings',
+    screenshot: '/images/product/marketing/bookings-list-marketing.png',
+    screenshotAlt: 'Bookeroo bookings list — table with status tabs, customer names, activities, and amounts',
+    widget: null,
+  },
+  {
+    eyebrow: 'Calendar & Scheduling',
+    heading: 'See your schedule the way operators think.',
+    body: 'A monthly calendar view shows how many bookings are on each day at a glance. Navigate between months, spot your busy days, and understand your workload without digging through tables.',
     href: '/product/staff-scheduling',
-    variant: 'schedule',
+    screenshot: '/images/product/marketing/calendar-view-marketing.png',
+    screenshotAlt: 'Bookeroo calendar view — monthly schedule with per-day booking counts',
+    widget: null,
+  },
+  {
+    eyebrow: 'Staff Management',
+    heading: 'Build rosters and track coverage.',
+    body: 'Weekly and daily scheduling views show which sessions are covered and which still need staff assigned. Manage availability per team member, filter by activity type, and set staffing requirement rules per activity.',
+    href: '/product/staff-scheduling',
+    screenshot: '/images/product/marketing/staff-scheduling-marketing.png',
+    screenshotAlt: 'Bookeroo staff scheduling — weekly view with session coverage status and staff roster',
+    widget: null,
   },
   {
     eyebrow: 'Financial Reporting',
-    heading: 'Know your numbers without spreadsheets.',
-    body: 'Track gross revenue, refunds, payouts, and platform fees. Export statements and get a clear picture of your finances.',
+    heading: 'Revenue clarity without the spreadsheets.',
+    body: 'Collected revenue, outstanding balances, Stripe payout tracking, cash flow breakdown, discount impact, revenue by activity — all in one view. Monthly statements and per-booking tax reports with CSV and PDF export.',
     href: '/product/financials',
-    variant: 'financials',
+    screenshot: '/images/product/marketing/financials-overview-marketing.png',
+    screenshotAlt: 'Bookeroo financials overview — KPI cards, Stripe payout widget, and cash flow summary',
+    widget: null,
   },
   {
-    eyebrow: 'Operations Dashboard',
-    heading: 'Full visibility into live operations.',
-    body: 'See what is happening right now — which tours are running, which staff are on duty, and how your resources are deployed.',
-    href: '/product/operations-dashboard',
-    variant: 'operations',
+    eyebrow: 'Customer Management',
+    heading: 'A CRM built around your guests.',
+    body: 'Every customer, all in one place. Total bookings, total spent, last activity, status. Your full customer history without a separate CRM platform.',
+    href: '/product-tour',
+    screenshot: '/images/product/marketing/customers-list-marketing.png',
+    screenshotAlt: 'Bookeroo customers list — CRM table with booking history, spend, and activity data',
+    widget: null,
   },
 ];
 ---
-<Layout title="Product — Bookeroo" description="Explore everything Bookeroo can do for your tour business.">
+<Layout title="Product — Bookeroo" description="Explore the complete Bookeroo operator platform for tour and activity businesses.">
   <PageHero
     eyebrow="Product"
-    heading="Everything you need to run your tour business."
-    subheading="A complete operating platform built for tour operators, activity providers, and experience businesses."
+    heading="The complete operator platform."
+    subheading="Bookeroo brings together everything a tour or activity business needs to operate — bookings, scheduling, staff, resources, finances, and customers."
   />
 
   <div class="bg-zinc-950">
     {sections.map((section, i) => (
-      <section class:list={["py-24 border-b border-zinc-800/50", i % 2 === 1 && "bg-zinc-900/30"]}>
+      <section class:list={["py-24 border-b border-zinc-800/50", i % 2 === 1 && "bg-zinc-900/20"]}>
         <div class="max-w-6xl mx-auto px-6">
-          <div class:list={["grid grid-cols-1 lg:grid-cols-2 gap-12 items-center", i % 2 === 1 && ""]}>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class:list={[i % 2 === 1 && "lg:order-2"]}>
               <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">{section.eyebrow}</p>
               <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">{section.heading}</h2>
@@ -59,7 +85,11 @@ const sections = [
               </a>
             </div>
             <div class:list={[i % 2 === 1 && "lg:order-1"]}>
-              <ProductPanel variant={section.variant as any} />
+              {section.widget === 'dashboard' ? (
+                <DashboardWidget />
+              ) : section.screenshot ? (
+                <ScreenshotPanel src={section.screenshot} alt={section.screenshotAlt || section.eyebrow} />
+              ) : null}
             </div>
           </div>
         </div>

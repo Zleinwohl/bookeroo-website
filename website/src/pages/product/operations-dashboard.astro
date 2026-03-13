@@ -2,37 +2,62 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FeatureGrid from '../../components/FeatureGrid.astro';
-import ProductPanel from '../../components/ProductPanel.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import DashboardWidget from '../../components/DashboardWidget.astro';
 import CTASection from '../../components/CTASection.astro';
 
 const features = [
-  { icon: '🟢', title: 'Live tour status', description: 'See which tours are active, boarding, or upcoming at any moment.' },
-  { icon: '📦', title: 'Resource management', description: 'Track boats, vehicles, and equipment availability in real time.' },
-  { icon: '📋', title: 'Today\'s manifest', description: 'A clean list of every tour and booking running today.' },
-  { icon: '👥', title: 'Staff on duty', description: 'See how many staff are working and which tours they are assigned to.' },
-  { icon: '📊', title: 'Capacity overview', description: 'Know which tours are filling up and where you still have availability.' },
-  { icon: '⚡', title: 'Real-time updates', description: 'The dashboard reflects your live operation as it happens.' },
+  { icon: '📊', title: 'KPI cards', description: 'Revenue, total bookings, avg. booking value, and capacity used — each with a percentage change vs. the prior period.' },
+  { icon: '📋', title: 'Today\'s Manifest', description: 'A per-session breakdown of every booking running today — guest count, waiver status, balance due, and colour-coded status (All clear / Needs attention / Urgent).' },
+  { icon: '🗓️', title: 'Upcoming sessions', description: 'The next 5 sessions with activity name, date and time, and how full each is (e.g. "83% full").' },
+  { icon: '📈', title: 'Revenue by activity', description: 'A ranked list showing revenue contribution by activity type — so you know which products are driving your business.' },
+  { icon: '💳', title: 'Stripe payout widget', description: 'See your next Stripe payout amount, what is in transit, what is pending, and the estimated arrival date — right on the dashboard.' },
+  { icon: '🔍', title: 'KPI drill-down', description: 'Click any KPI card to open a detail modal with a trend chart, time range selector (Last 7/14/30 days, This month), and peak / low / average stats.' },
 ];
 ---
-<Layout title="Operations Dashboard — Bookeroo" description="Live operational visibility for your entire tour business.">
+<Layout title="Operations Dashboard — Bookeroo" description="A real-time operator dashboard showing KPIs, Today's Manifest, upcoming sessions, and Stripe payout status.">
   <PageHero
     eyebrow="Operations Dashboard"
-    heading="Full visibility into your live operation."
-    subheading="See what is happening right now — which tours are running, which staff are on duty, and how your resources are deployed."
+    heading="Your entire operation, at a glance."
+    subheading="KPI cards, Today's Manifest, upcoming sessions, Stripe payout status, and revenue by activity — all on one screen."
   />
+
   <section class="py-24 bg-zinc-950">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+
+      <!-- Interactive widget + copy -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Operations</p>
-          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Stop guessing. Start knowing.</h2>
-          <p class="text-lg text-zinc-400 leading-relaxed mb-6">The operations dashboard gives you a real-time view of your entire business — which tours are running, how full they are, and who is handling what.</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">The operator dashboard</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Start every day knowing where things stand.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+            The dashboard greets you with KPI cards for Revenue, Bookings, Avg. Booking Value, and Capacity Used — each with a period comparison so you can see whether you are trending up or down.
+          </p>
+          <p class="text-base text-zinc-500 leading-relaxed mb-8">
+            Clicking any KPI card opens a detail modal with a trend line chart, time range selector, and peak / low / average stats for the selected period. Your Stripe payout status is always visible on the dashboard too — no need to check Stripe separately.
+          </p>
           <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
         </div>
-        <ProductPanel variant="operations" />
+        <DashboardWidget />
       </div>
+
+      <!-- Full dashboard screenshot -->
+      <div class="mb-20">
+        <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">The real dashboard</p>
+        <h3 class="text-2xl font-semibold tracking-tight text-zinc-100 mb-4">Everything on one screen.</h3>
+        <p class="text-base text-zinc-400 leading-relaxed mb-8 max-w-2xl">
+          The full dashboard shows KPI cards, Stripe payout widget, Today's Manifest with per-session waiver and balance status, upcoming sessions with capacity fill rates, recent bookings, and revenue by activity type.
+        </p>
+        <ScreenshotPanel
+          src="/images/product/marketing/dashboard-overview-marketing.png"
+          alt="Bookeroo operations dashboard — KPI cards, Today's Manifest, upcoming sessions, recent bookings, and revenue by activity"
+        />
+      </div>
+
+      <!-- Feature grid -->
       <FeatureGrid features={features} columns={3} />
     </div>
   </section>
+
   <CTASection />
 </Layout>

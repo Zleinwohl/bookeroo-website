@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+import ScreenshotPanel from '../components/ScreenshotPanel.astro';
+import DashboardWidget from '../components/DashboardWidget.astro';
+import BookingsWidget from '../components/BookingsWidget.astro';
+import FinancialsWidget from '../components/FinancialsWidget.astro';
+
+const steps = [
+  {
+    number: '01',
+    eyebrow: 'Dashboard',
+    heading: 'Start every day with a clear picture.',
+    body: 'The Bookeroo dashboard opens to your KPI cards — Revenue, Bookings, Avg. Booking Value, and Capacity Used, each with a period-over-period change. Below that, Today\'s Manifest shows every session running today with per-guest waiver and balance status. Upcoming sessions show how full each slot is. Your Stripe payout is always visible.',
+    details: [
+      'Revenue, Bookings, Avg. Value, Capacity KPIs',
+      'Today\'s Manifest with per-session guest status',
+      'Upcoming sessions with fill rate (e.g. "83% full")',
+      'Stripe payout: in transit, pending, estimated arrival',
+      'Revenue by activity type',
+      'Click any KPI card to drill down with trend charts',
+    ],
+    widget: 'dashboard',
+    screenshot: null,
+  },
+  {
+    number: '02',
+    eyebrow: 'Bookings',
+    heading: 'Manage every booking from one table.',
+    body: 'All bookings across every activity in a single filterable table. Confirmed, Pending, Cancelled — status badges make it clear at a glance. Filter by status tab, search by customer name or booking ID, see what is paid and what is outstanding. Export the full list when you need it.',
+    details: [
+      'All bookings: customer, activity, date, tickets, amount',
+      'Status tabs: All, Confirmed, Pending, Cancelled',
+      'Search by customer or booking ID',
+      'Payment status: paid vs. outstanding balance',
+      'Export to CSV',
+    ],
+    widget: 'bookings',
+    screenshot: null,
+  },
+  {
+    number: '03',
+    eyebrow: 'Calendar',
+    heading: 'See your schedule at a glance.',
+    body: 'A monthly calendar shows how many bookings are on each day. Navigate between months with prev / next buttons. Today is highlighted so you always have a reference point. Use the calendar to understand booking density before drilling into individual sessions.',
+    details: [
+      'Monthly calendar view with booking counts per day',
+      'Today highlighted for quick orientation',
+      'Navigate between months easily',
+    ],
+    widget: null,
+    screenshot: '/images/product/marketing/calendar-view-marketing.png',
+    screenshotAlt: 'Bookeroo calendar view — monthly schedule with per-day booking counts',
+  },
+  {
+    number: '04',
+    eyebrow: 'Activities',
+    heading: 'Manage your full activity catalog.',
+    body: 'All your bookable experiences in a card grid — activity name, active/inactive status, booking count, total revenue, and schedule count. You can manage the activities that power your schedule from here. Inactive activities are clearly marked and excluded from new bookings.',
+    details: [
+      'Card grid with activity name, status, and metrics',
+      'Booking count and total revenue per activity',
+      'Active and Inactive status badges',
+      'Schedule count per activity',
+    ],
+    widget: null,
+    screenshot: '/images/product/marketing/activities-list-marketing.png',
+    screenshotAlt: 'Bookeroo activities list — card grid with booking count, revenue, and status per activity',
+  },
+  {
+    number: '05',
+    eyebrow: 'Staff Management',
+    heading: 'Build rosters and track coverage.',
+    body: 'A weekly schedule view shows all sessions across 7 days with their staffing status — Covered (green) or Needs Staff (amber). Switch to day view for a detailed look at a single date. Toggle staff availability, filter by activity type, and manage staffing requirement rules per activity.',
+    details: [
+      'Weekly view: 7-day calendar with coverage status',
+      'Day view: detailed session cards for a single date',
+      'Staff availability toggles per team member',
+      'Activity-type filter for focused scheduling',
+      'Staffing requirement rules per activity type',
+    ],
+    widget: null,
+    screenshot: '/images/product/marketing/staff-scheduling-marketing.png',
+    screenshotAlt: 'Bookeroo staff scheduling — weekly calendar with sessions and Covered/Needs Staff indicators',
+  },
+  {
+    number: '06',
+    eyebrow: 'Financials',
+    heading: 'Revenue clarity without the spreadsheets.',
+    body: 'Collected revenue, outstanding balances, Stripe payout status, cash flow breakdown, discount impact, and revenue by activity — all in one view. Switch between This Month, Last Month, and This Year. Monthly statements and per-booking tax reports are available with CSV and PDF export.',
+    details: [
+      'Collected, outstanding, projected revenue KPIs',
+      'Stripe payout: in transit, pending, estimated arrival',
+      'Cash flow: gross revenue, discounts, refunds, net',
+      'Revenue by activity type with booking counts',
+      'Discount impact: per-code usage and revenue impact',
+      'Monthly statements + tax reports with export',
+    ],
+    widget: 'financials',
+    screenshot: null,
+  },
+  {
+    number: '07',
+    eyebrow: 'Customers',
+    heading: 'A CRM built around your guests.',
+    body: 'Every customer in one table — total bookings, total spent, last activity name and date, and status. Your full customer relationship history without a separate CRM platform. Quickly understand your most active guests and track customer value over time.',
+    details: [
+      'Customer ID, name, total bookings, total spent',
+      'Last activity: activity name + date',
+      'Customer status',
+      '22+ customers in the demo',
+    ],
+    widget: null,
+    screenshot: '/images/product/marketing/customers-list-marketing.png',
+    screenshotAlt: 'Bookeroo customers list — CRM with total bookings, total spent, and last activity per customer',
+  },
+];
+---
+
+<Layout
+  title="Product Tour — Bookeroo"
+  description="A step-by-step visual guide through the Bookeroo operator platform — dashboard, bookings, scheduling, staff, financials, and customers."
+>
+
+  <!-- Hero -->
+  <section class="py-20 md:py-28 bg-zinc-950 border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Product Tour</p>
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight text-zinc-100 leading-tight max-w-3xl mb-6">
+        See how Bookeroo works.
+      </h1>
+      <p class="text-xl text-zinc-400 max-w-2xl leading-relaxed mb-8">
+        A step-by-step walkthrough of the operator platform — from your daily dashboard to bookings, scheduling, staff management, financials, and customers.
+      </p>
+      <!-- Step nav pills -->
+      <div class="flex flex-wrap gap-2">
+        {steps.map(step => (
+          <a
+            href={`#step-${step.number}`}
+            class="text-xs font-medium px-3 py-1.5 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-400 hover:text-zinc-100 hover:border-zinc-500 transition-all"
+          >
+            {step.number} · {step.eyebrow}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <div class="bg-zinc-950">
+    {steps.map((step, i) => (
+      <section
+        id={`step-${step.number}`}
+        class:list={[
+          "py-24 border-b border-zinc-800/50 scroll-mt-20",
+          i % 2 === 1 && "bg-zinc-900/20"
+        ]}
+      >
+        <div class="max-w-6xl mx-auto px-6">
+          <!-- Step indicator -->
+          <div class="flex items-center gap-3 mb-10">
+            <span class="text-5xl font-bold font-mono text-zinc-800 leading-none">{step.number}</span>
+            <div class="h-px flex-1 bg-zinc-800 max-w-xs"></div>
+          </div>
+
+          <div class:list={[
+            "grid grid-cols-1 lg:grid-cols-2 gap-16 items-start",
+          ]}>
+            <!-- Copy -->
+            <div class:list={[i % 2 === 1 && "lg:order-2"]}>
+              <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">{step.eyebrow}</p>
+              <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">{step.heading}</h2>
+              <p class="text-lg text-zinc-400 leading-relaxed mb-8">{step.body}</p>
+
+              <!-- Detail checklist -->
+              <ul class="space-y-2.5">
+                {step.details.map(detail => (
+                  <li class="flex items-start gap-2.5 text-sm text-zinc-400">
+                    <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Visual -->
+            <div class:list={[i % 2 === 1 && "lg:order-1"]}>
+              {step.widget === 'dashboard' ? (
+                <DashboardWidget />
+              ) : step.widget === 'bookings' ? (
+                <BookingsWidget />
+              ) : step.widget === 'financials' ? (
+                <FinancialsWidget />
+              ) : step.screenshot ? (
+                <ScreenshotPanel src={step.screenshot} alt={step.screenshotAlt || step.eyebrow} />
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- What operators say about the platform -->
+  <section class="py-24 bg-zinc-950 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Ready to see it live?</p>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-4">Book a live walkthrough.</h2>
+      <p class="text-lg text-zinc-400 max-w-xl mx-auto mb-8 leading-relaxed">
+        We will show you the full platform with your type of business in mind. Setup typically takes less than a day.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/demo" class="bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-base">
+          Book a Demo
+        </a>
+        <a href="/pricing" class="border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-base">
+          See Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

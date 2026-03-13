@@ -2,37 +2,64 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FeatureGrid from '../../components/FeatureGrid.astro';
-import ProductPanel from '../../components/ProductPanel.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
 import CTASection from '../../components/CTASection.astro';
 
 const features = [
-  { icon: '👥', title: 'Staff roster', description: 'Add your team and assign roles — guides, captains, support staff.' },
-  { icon: '📅', title: 'Shift scheduling', description: 'Set shift hours and assign staff to specific tours and time slots.' },
-  { icon: '🔍', title: 'Daily view', description: 'See the full day at a glance — who is on, what they are running, and when.' },
-  { icon: '⚡', title: 'Quick reassignment', description: 'Drag and reassign staff when plans change.' },
-  { icon: '📊', title: 'Workload visibility', description: 'Understand how many tours each staff member is handling across the week.' },
-  { icon: '🔔', title: 'Schedule clarity', description: 'No more confusion about who is working. Everyone is on the same page.' },
+  { icon: '📅', title: 'Weekly schedule view', description: 'A 7-column calendar showing all sessions for the week with their coverage status — Covered (green) or Needs Staff (amber).' },
+  { icon: '🗓️', title: 'Day view', description: 'Switch to a single-day view showing all sessions for that date with full detail cards — activity name, time, status, and assigned staff.' },
+  { icon: '🟢', title: 'Coverage indicators', description: 'At a glance, see which sessions are fully staffed and which still need someone assigned — before the day of operation.' },
+  { icon: '👥', title: 'Staff availability', description: 'Toggle availability per staff member. Each team member can be marked as available or unavailable for the current period.' },
+  { icon: '🎯', title: 'Activity type filters', description: 'Filter the schedule to show only specific activity types — useful when managing multiple simultaneous session types.' },
+  { icon: '📋', title: 'Staffing rules', description: 'Define staffing requirement rules per activity — e.g. "1 × Instructor required for Guided Jet Ski Tour". Bookeroo tracks compliance automatically.' },
 ];
 ---
-<Layout title="Staff Scheduling — Bookeroo" description="Schedule your guides, captains, and crew with ease.">
+<Layout title="Staff Scheduling — Bookeroo" description="Manage your guides, instructors, and crew with weekly and daily scheduling views.">
   <PageHero
-    eyebrow="Staff Scheduling"
-    heading="Schedule your team without the chaos."
-    subheading="Build and manage staff rosters, assign guides to tours, and get full visibility into your team's workload."
+    eyebrow="Staff Management"
+    heading="Know who is on and what they are covering."
+    subheading="Weekly and daily scheduling views with real-time coverage status. See which sessions are staffed and which still need someone assigned."
   />
+
   <section class="py-24 bg-zinc-950">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+
+      <!-- Screenshot + copy -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Staff scheduling</p>
-          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">No more WhatsApp rosters.</h2>
-          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Assign guides and crew to tours directly in Bookeroo. See who is working each day and quickly reassign when plans change.</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Weekly View</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Your full team roster, by week.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+            The weekly view shows all seven days side by side. Each session for that day appears in its column with a coverage status indicator — green for covered, amber for needs staff. Navigate between weeks with the arrow buttons.
+          </p>
+          <p class="text-base text-zinc-500 leading-relaxed mb-8">
+            The staff overview panel on the right shows all 10 team members and their availability status, so you can see at a glance who is available to fill unstaffed sessions.
+          </p>
           <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
         </div>
-        <ProductPanel variant="schedule" />
+        <ScreenshotPanel
+          src="/images/product/marketing/staff-scheduling-marketing.png"
+          alt="Bookeroo staff scheduling weekly view — 7-column calendar with sessions and Covered/Needs Staff indicators"
+        />
       </div>
+
+      <!-- Day view screenshot -->
+      <div class="mb-20">
+        <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Day View</p>
+        <h3 class="text-2xl font-semibold tracking-tight text-zinc-100 mb-4">Zoom into a single day's operations.</h3>
+        <p class="text-base text-zinc-400 leading-relaxed mb-8 max-w-2xl">
+          Switch to day view for a focused look at all sessions running on a specific date — with full session cards showing activity name, time, coverage status, and assigned staff for each slot.
+        </p>
+        <ScreenshotPanel
+          src="/images/product/marketing/staff-day-view-marketing.png"
+          alt="Bookeroo staff day view — single day showing two sessions with Covered and Needs Staff status cards"
+        />
+      </div>
+
+      <!-- Feature grid -->
       <FeatureGrid features={features} columns={3} />
     </div>
   </section>
+
   <CTASection />
 </Layout>

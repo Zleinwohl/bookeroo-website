@@ -2,37 +2,62 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FeatureGrid from '../../components/FeatureGrid.astro';
-import ProductPanel from '../../components/ProductPanel.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import BookingsWidget from '../../components/BookingsWidget.astro';
 import CTASection from '../../components/CTASection.astro';
 
 const features = [
-  { icon: '📋', title: 'Real-time booking list', description: 'View all bookings as they come in. Filter by status, date, or tour.' },
-  { icon: '✉️', title: 'Automatic confirmations', description: 'Customers receive booking confirmation emails automatically.' },
-  { icon: '🔄', title: 'Status management', description: 'Mark bookings as confirmed, pending, or cancelled with one click.' },
-  { icon: '👤', title: 'Customer records', description: 'Store customer details alongside their bookings for easy reference.' },
-  { icon: '💳', title: 'Payment tracking', description: 'See what has been paid and what is outstanding.' },
-  { icon: '📅', title: 'Calendar view', description: 'View bookings on a day or week calendar to understand your schedule.' },
+  { icon: '📋', title: 'All bookings in one table', description: 'Every booking across all your activities visible in one filterable list — customer, activity, date, tickets, amount, and status.' },
+  { icon: '🏷️', title: 'Status management', description: 'Bookings are marked Confirmed, Pending, or Cancelled. Track which bookings have outstanding balances at a glance.' },
+  { icon: '🔍', title: 'Search and filter', description: 'Filter by booking status or search by customer name and booking ID. Find any booking instantly.' },
+  { icon: '📤', title: 'Export', description: 'Export your full booking list to CSV for records, reporting, or external use.' },
+  { icon: '🎟️', title: 'Booking IDs', description: 'Every booking gets a unique ID (e.g. #1037) for easy reference in customer conversations.' },
+  { icon: '💳', title: 'Payment tracking', description: 'See which bookings are fully paid and which have outstanding balances still owed by the customer.' },
 ];
 ---
-<Layout title="Booking Management — Bookeroo" description="Accept and manage bookings across all your tours and activities.">
+<Layout title="Booking Management — Bookeroo" description="Manage all your bookings across every activity from one clean dashboard.">
   <PageHero
     eyebrow="Booking Management"
-    heading="Every booking, organised and visible."
-    subheading="Accept reservations, track customer details, and manage booking status — all from one clean dashboard."
+    heading="Every booking, visible and organised."
+    subheading="All your bookings in one table. Filter by status, search by customer, track payment — without touching your inbox."
   />
+
   <section class="py-24 bg-zinc-950">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+
+      <!-- Interactive widget + copy -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
         <div>
           <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">How it works</p>
           <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Stop managing bookings from your inbox.</h2>
-          <p class="text-lg text-zinc-400 leading-relaxed mb-6">When a booking comes in, it appears instantly in your dashboard. You can see who booked, which tour, how many people, and the payment status — without digging through emails.</p>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+            Every booking lands in one table the moment it comes in. You can see who booked, which activity, how many tickets, the payment status, and whether any balance is outstanding — all without digging through emails or spreadsheets.
+          </p>
+          <p class="text-base text-zinc-500 leading-relaxed mb-8">
+            Filter tabs let you switch between All bookings, Confirmed, Pending (those with outstanding balances or awaiting confirmation), and Cancelled. The badge count on each tab tells you how many are in each state.
+          </p>
           <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
         </div>
-        <ProductPanel variant="bookings" />
+        <BookingsWidget />
       </div>
+
+      <!-- Real screenshot -->
+      <div class="mb-20">
+        <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">The real dashboard</p>
+        <h3 class="text-2xl font-semibold tracking-tight text-zinc-100 mb-4">Your bookings, exactly as they appear.</h3>
+        <p class="text-base text-zinc-400 leading-relaxed mb-8 max-w-2xl">
+          The bookings list shows the full picture — booking ID, customer name, activity type, date and time, number of tickets, total amount, and colour-coded status badge. One click switches between status views.
+        </p>
+        <ScreenshotPanel
+          src="/images/product/marketing/bookings-list-marketing.png"
+          alt="Bookeroo bookings list — complete view with status tabs, customer names, activity names, and payment amounts"
+        />
+      </div>
+
+      <!-- Feature grid -->
       <FeatureGrid features={features} columns={3} />
     </div>
   </section>
+
   <CTASection />
 </Layout>

@@ -4,34 +4,130 @@ import PageHero from '../components/PageHero.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
 import CTASection from '../components/CTASection.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import ScreenshotPanel from '../components/ScreenshotPanel.astro';
 
-const coreFeatures = [
-  { icon: '📋', title: 'Booking Management', description: 'Accept and manage bookings across all your tours. Track status, customer info, and payments.' },
-  { icon: '👥', title: 'Staff Scheduling', description: 'Build rosters and assign staff to tours. Get a clear view of who is working each day.' },
-  { icon: '📊', title: 'Financial Reporting', description: 'Revenue, payouts, refunds, and statements — all in one place, no spreadsheets required.' },
-  { icon: '⚙️', title: 'Resource Management', description: 'Track boats, vehicles, and equipment. Know what is available before you confirm a booking.' },
-  { icon: '📝', title: 'Digital Waivers', description: 'Collect signed waivers digitally before customers arrive. No paper, no admin.' },
-  { icon: '🎟️', title: 'Promotional Codes', description: 'Create discount codes and track how customers are using them.' },
-  { icon: '🗓️', title: 'Schedule Management', description: 'Set up tour schedules with recurring slots, capacity limits, and time windows.' },
-  { icon: '📱', title: 'Customer Booking Widget', description: 'Embed a booking widget on your website so customers can book directly.' },
-  { icon: '🟢', title: 'Live Operations View', description: 'See which tours are active, how full they are, and what is happening right now.' },
+// All features verified against the real Bookeroo product portal
+const operationsFeatures = [
+  { icon: '📊', title: 'Operations Dashboard', description: 'KPI cards for Revenue, Bookings, Avg. Booking Value, and Capacity Used. Today\'s Manifest. Upcoming sessions with fill rates. Stripe payout status.' },
+  { icon: '📋', title: 'Booking Management', description: 'All bookings in one filterable table. Status tabs: Confirmed, Pending, Cancelled. Search by customer or ID. Export to CSV.' },
+  { icon: '🗓️', title: 'Calendar View', description: 'Monthly calendar showing booking counts per day. Navigate between months. Today highlighted for quick reference.' },
+];
+
+const scheduleFeatures = [
+  { icon: '👥', title: 'Staff Scheduling', description: 'Weekly and daily schedule views with Covered / Needs Staff status per session. Staff availability toggles. Activity-type filters.' },
+  { icon: '⚙️', title: 'Resource Management', description: 'Equipment and asset cards showing status (Active, Maintenance, Offline), capacity, and availability counts. Resource assignment rules per activity.' },
+  { icon: '🏄', title: 'Activity Management', description: 'Manage your full activity catalog. Track bookings and revenue per activity. Set Active or Inactive status. Manage schedule slots.' },
+];
+
+const customerFeatures = [
+  { icon: '👤', title: 'Customer CRM', description: 'Every customer in one table — total bookings, total spent, last activity, status. Your full customer relationship history without a separate tool.' },
+  { icon: '🎟️', title: 'Promotional Codes', description: 'Create discount codes with a percentage off, expiry date, and usage tracking. See how many times each code has been redeemed.' },
+  { icon: '📝', title: 'Digital Waivers', description: 'Waiver templates linked to activities. Track signed and unsigned waivers. See which guests still need to complete their waiver before the session.' },
+];
+
+const financeFeatures = [
+  { icon: '💰', title: 'Revenue Overview', description: 'Collected, outstanding, and projected revenue KPIs. Period filter: This Month, Last Month, This Year. Period-over-period change indicators.' },
+  { icon: '💳', title: 'Stripe Payout Tracking', description: 'Next payout amount, in transit vs. pending breakdown, estimated arrival date — directly in the dashboard. No switching to Stripe.' },
+  { icon: '📊', title: 'Cash Flow Summary', description: 'Gross revenue, discount cost, refunds issued, cancellation losses, and net revenue — a clean breakdown for each period.' },
+  { icon: '🏷️', title: 'Discount Impact', description: 'Per-code table showing discount percentage, number of uses, and estimated revenue lost to promotions.' },
+  { icon: '📄', title: 'Monthly Statements', description: 'Settlement records linked to Stripe payouts — view, download as PDF, or export the full history.' },
+  { icon: '🧾', title: 'Tax Report', description: 'Per-booking tax breakdown. Filter by month or All Time. Export to CSV or PDF.' },
 ];
 ---
-<Layout title="Features — Bookeroo" description="Everything Bookeroo can do for your tour business.">
+<Layout title="Features — Bookeroo" description="All the tools Bookeroo includes for tour and activity operators — bookings, scheduling, staff, resources, financials, and customers.">
   <PageHero
     eyebrow="Features"
-    heading="Everything built for tour operators."
-    subheading="Bookeroo brings together the tools you actually need — nothing more, nothing less."
+    heading="Everything built for tour and activity operators."
+    subheading="Bookeroo is a complete operator platform. Here is everything that is included."
   />
-  <section class="py-24 bg-zinc-950">
+
+  <!-- Operations -->
+  <section class="py-20 bg-zinc-950">
     <div class="max-w-6xl mx-auto px-6">
       <SectionHeader
-        eyebrow="Core features"
-        heading="All the tools. One platform."
-        subheading="Designed to replace the mess of spreadsheets, group chats, and disconnected software."
+        eyebrow="Operations"
+        heading="Run your day-to-day."
+        subheading="The tools operators use every day — dashboard, bookings, and calendar."
       />
-      <FeatureGrid features={coreFeatures} columns={3} />
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div class="lg:col-span-1 space-y-0">
+          <FeatureGrid features={operationsFeatures} columns={1} />
+        </div>
+        <div class="lg:col-span-2">
+          <ScreenshotPanel
+            src="/images/product/marketing/dashboard-overview-marketing.png"
+            alt="Bookeroo operations dashboard — KPI cards, Today's Manifest, upcoming sessions"
+          />
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Scheduling & Resources -->
+  <section class="py-20 bg-zinc-900/20 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Scheduling & Resources"
+        heading="Staff, activities, and equipment."
+        subheading="Assign staff to sessions, manage your activity catalog, and track physical resources."
+      />
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div class="lg:col-span-2 lg:order-1">
+          <ScreenshotPanel
+            src="/images/product/marketing/staff-scheduling-marketing.png"
+            alt="Bookeroo staff scheduling — weekly calendar with coverage status"
+          />
+        </div>
+        <div class="lg:col-span-1 lg:order-2">
+          <FeatureGrid features={scheduleFeatures} columns={1} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customers & Marketing -->
+  <section class="py-20 bg-zinc-950 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Customers & Marketing"
+        heading="Know your guests. Grow your bookings."
+        subheading="Customer CRM, promotional codes, and digital waivers."
+      />
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div class="lg:col-span-1">
+          <FeatureGrid features={customerFeatures} columns={1} />
+        </div>
+        <div class="lg:col-span-2">
+          <ScreenshotPanel
+            src="/images/product/marketing/customers-list-marketing.png"
+            alt="Bookeroo customers list — CRM with booking history and spend"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financials -->
+  <section class="py-20 bg-zinc-900/20 border-t border-zinc-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionHeader
+        eyebrow="Financial Reporting"
+        heading="Revenue and payments, all in one place."
+        subheading="Track collected revenue, Stripe payouts, cash flow, statements, and tax — without leaving the dashboard."
+      />
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div class="lg:col-span-2 lg:order-1">
+          <ScreenshotPanel
+            src="/images/product/marketing/financials-overview-marketing.png"
+            alt="Bookeroo financials overview — KPI cards, Stripe payout, cash flow summary"
+          />
+        </div>
+        <div class="lg:col-span-1 lg:order-2">
+          <FeatureGrid features={financeFeatures} columns={1} />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <CTASection />
 </Layout>

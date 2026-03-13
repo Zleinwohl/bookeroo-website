@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '⚡', title: 'Multi-activity management', description: 'Manage your full catalog of adventure activities with individual scheduling, capacity limits, and revenue tracking per activity type. Toggle activities active or inactive as your season changes.' },
+  { icon: '🔧', title: 'Equipment & resource assignment', description: 'Define which equipment each activity requires and track resource availability across bookings. Know before confirming whether the right assets are free for that session.' },
+  { icon: '👤', title: 'Staff assignment', description: 'Assign instructors and guides to sessions using the weekly schedule view. See which sessions have coverage and which still need a staff member assigned.' },
+  { icon: '🎟️', title: 'Promotional codes', description: 'Create discount codes for adventure packages with expiry dates and usage limits. Track how many times each code has been redeemed from the operator dashboard.' },
+  { icon: '💰', title: 'Revenue by activity', description: 'See which activities are generating the most revenue and how each is performing. Break down income by activity type to inform scheduling and pricing decisions.' },
+  { icon: '✍️', title: 'Digital waivers', description: 'Collect signed waivers before customers participate in any activity. Link waiver templates to specific activities so the correct form is always attached to the right booking.' },
+];
+---
+<Layout title="Adventure Tour Booking Software — Bookeroo" description="Manage adventure tour bookings, equipment, staff, and revenue across all your activities with Bookeroo.">
+  <PageHero
+    eyebrow="Adventure Tours"
+    heading="One platform for all your adventure activities."
+    subheading="Manage bookings, staff, equipment, and revenue across your full range of adventure experiences — buggies, jet skis, aqua karts, and more."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Built for your operation</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Every activity, every resource, one dashboard.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Adventure operators running ATV rides, parasailing, water sports combinations, and multi-activity packages face a coordination problem that generic booking tools can't solve. Each activity needs its own equipment, its own staff, and its own capacity rules. Bookeroo's resource management lets you define exactly which assets are required per activity and automatically tracks their availability — so you know at a glance what can be confirmed and what's already committed.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ScreenshotPanel src="/images/product/marketing/activities-list-marketing.png" alt="Bookeroo activity management for adventure tour operator" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

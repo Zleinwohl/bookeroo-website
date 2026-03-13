@@ -2,37 +2,62 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FeatureGrid from '../../components/FeatureGrid.astro';
-import ProductPanel from '../../components/ProductPanel.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import FinancialsWidget from '../../components/FinancialsWidget.astro';
 import CTASection from '../../components/CTASection.astro';
 
 const features = [
-  { icon: '💰', title: 'Revenue tracking', description: 'See total revenue across all tours and activities in real time.' },
-  { icon: '📤', title: 'Payout reporting', description: 'Know exactly what you will receive and when.' },
-  { icon: '🧾', title: 'Statements', description: 'Generate and export monthly statements for your records.' },
-  { icon: '📉', title: 'Refund management', description: 'Track refunds alongside revenue for a clean financial picture.' },
-  { icon: '🏷️', title: 'Promotional codes', description: 'Create and track discount codes. See how many times each code was used.' },
-  { icon: '📋', title: 'Tax reporting', description: 'Get tax-ready summaries to simplify end-of-year reporting.' },
+  { icon: '💰', title: 'Revenue KPIs', description: 'Collected revenue, outstanding balances, projected revenue from confirmed bookings, and avg. booking value — all with period-over-period change indicators.' },
+  { icon: '💳', title: 'Stripe payout tracking', description: 'See your next Stripe payout amount, what is in transit, what is pending, and the estimated arrival date — directly in the dashboard.' },
+  { icon: '📊', title: 'Cash flow breakdown', description: 'Gross revenue, discount cost, refunds issued, cancellation losses, and net revenue — a clean line-by-line summary for each period.' },
+  { icon: '🏷️', title: 'Discount impact', description: 'A table showing each promo code used, the discount percentage, number of uses, and estimated revenue impact.' },
+  { icon: '📄', title: 'Monthly statements', description: 'A history of monthly settlement records linked to Stripe payouts, with view and PDF download per statement.' },
+  { icon: '🧾', title: 'Tax report', description: 'Per-booking tax breakdown with period filter tabs (current month, prior months, All Time). Export to CSV or PDF.' },
 ];
 ---
-<Layout title="Financial Reporting — Bookeroo" description="Track revenue, payouts, and refunds without spreadsheets.">
+<Layout title="Financial Reporting — Bookeroo" description="Track revenue, Stripe payouts, cash flow, and tax — all in one operator dashboard.">
   <PageHero
     eyebrow="Financial Reporting"
     heading="Know your numbers without the spreadsheets."
-    subheading="Track revenue, payouts, and refunds in one place. Get clear financial reporting built for operators."
+    subheading="Collected revenue, outstanding balances, Stripe payout tracking, cash flow, and tax reports — all in one view."
   />
+
   <section class="py-24 bg-zinc-950">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+
+      <!-- Interactive widget + copy -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Financials</p>
-          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Clear visibility into your revenue.</h2>
-          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Bookeroo shows you your gross revenue, net payout, and refunds side by side — so you always know where your money stands, without touching a spreadsheet.</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Financials Overview</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Clear revenue visibility — period by period.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">
+            Switch between This Month, Last Month, and This Year. The numbers update instantly — collected revenue, outstanding balances, Stripe payout status, and your full cash flow breakdown including discounts, refunds, and net revenue.
+          </p>
+          <p class="text-base text-zinc-500 leading-relaxed mb-8">
+            Stripe integration shows your next payout amount, how much is in transit vs. pending, and the estimated arrival date. No switching between platforms to track your money.
+          </p>
           <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
         </div>
-        <ProductPanel variant="financials" />
+        <FinancialsWidget />
       </div>
+
+      <!-- Real screenshot -->
+      <div class="mb-20">
+        <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">The real dashboard</p>
+        <h3 class="text-2xl font-semibold tracking-tight text-zinc-100 mb-4">Your financials, in full.</h3>
+        <p class="text-base text-zinc-400 leading-relaxed mb-8 max-w-2xl">
+          The financials overview page combines KPI cards, Stripe payout widget, outstanding balance tracker, revenue by activity, discount impact table, and cash flow summary — all without leaving the dashboard.
+        </p>
+        <ScreenshotPanel
+          src="/images/product/marketing/financials-overview-marketing.png"
+          alt="Bookeroo financials overview — KPI cards, Stripe payout widget, outstanding balances, revenue by activity, and discount impact table"
+        />
+      </div>
+
+      <!-- Feature grid -->
       <FeatureGrid features={features} columns={3} />
     </div>
   </section>
+
   <CTASection />
 </Layout>

@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '📋', title: 'Multi-activity booking management', description: 'Manage bookings across multiple tour types — hiking, walking, cultural, and more — in one dashboard. Filter by activity, booking status, or date.' },
+  { icon: '🧭', title: 'Guide scheduling', description: 'Weekly and daily schedule views show which guides are assigned to which tours and which sessions still need staff coverage.' },
+  { icon: '👥', title: 'Group capacity management', description: 'Track how full each tour session is against its capacity limit. Identify sold-out departures and available slots without digging through bookings manually.' },
+  { icon: '📇', title: 'Customer CRM', description: "See each guest's booking history, total spend, and last activity across your full tour catalog — useful for follow-up and loyalty tracking." },
+  { icon: '💰', title: 'Financial reporting', description: 'Revenue by tour type, outstanding balances, and Stripe payout tracking in one view. Understand which tours are driving performance and where gaps exist.' },
+  { icon: '✍️', title: 'Digital waivers', description: 'Collect liability waivers digitally before guests depart. Waiver templates link to specific tour types so the right form is always used.' },
+];
+---
+<Layout title="Guided Tour Booking Software — Bookeroo" description="Manage guided tour bookings, guide schedules, group capacity, and revenue with Bookeroo.">
+  <PageHero
+    eyebrow="Guided Tours"
+    heading="Booking and operations software for guided tour operators."
+    subheading="Manage group bookings, guide schedules, multi-activity itineraries, and revenue — from one operator dashboard."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Built for your operation</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">One system for every tour in your catalog.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Guided tour operators run multiple tour types simultaneously — different guides, varying group sizes, and separate schedules for each activity. Bookeroo centralises all of it: each tour type has its own schedule slots and capacity settings, guides are assigned through a staff schedule view, and every booking is tracked from confirmation through to departure. No more switching between tools to figure out who is running what, and when.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ScreenshotPanel src="/images/product/marketing/bookings-list-marketing.png" alt="Bookeroo bookings list for guided tour operator" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

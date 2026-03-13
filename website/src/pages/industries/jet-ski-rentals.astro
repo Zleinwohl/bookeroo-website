@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import ScreenshotPanel from '../../components/ScreenshotPanel.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const features = [
+  { icon: '📋', title: 'Rental bookings', description: 'Accept and track all bookings across your rental fleet from one operator dashboard. Filter by date, status, or equipment unit.' },
+  { icon: '🛥️', title: 'Equipment management', description: 'Track every jet ski — active, in maintenance, or offline. Know exactly how many units are available before confirming a new booking.' },
+  { icon: '👤', title: 'Staff & instructor scheduling', description: 'Assign instructors and operators to rental sessions using weekly and daily schedule views. See who is covering each slot at a glance.' },
+  { icon: '🗒️', title: 'Session manifest', description: "Today's Manifest shows each session with guest names, waiver completion status, and any outstanding balance — all on one screen." },
+  { icon: '💰', title: 'Financial reporting', description: 'Track collected revenue, Stripe payouts, outstanding balances, and revenue broken down by equipment type or activity.' },
+  { icon: '✍️', title: 'Digital waivers', description: 'Collect signed liability waivers before guests get in the water. See at a glance who has signed and who still needs to complete theirs.' },
+];
+---
+<Layout title="Jet Ski Rental Software — Bookeroo" description="Manage jet ski rental bookings, equipment availability, staff scheduling, and revenue with Bookeroo.">
+  <PageHero
+    eyebrow="Jet Ski Rentals"
+    heading="Booking software for jet ski rental operators."
+    subheading="Manage rental bookings, track equipment availability, schedule staff, and monitor revenue — all from one dashboard."
+  />
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3">Built for your operation</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-zinc-100 mb-4 leading-tight">Manage your fleet without the admin chaos.</h2>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-6">Running a jet ski rental operation means juggling multiple units, time-blocked rental slots, operator assignments, and guests who need waivers before they touch the water. Bookeroo gives you one dashboard to track which equipment is active, which is in maintenance, and which slots are filled — so you can stop cross-referencing spreadsheets and start running your day.</p>
+          <a href="/demo" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm">Book a Demo</a>
+        </div>
+        <ScreenshotPanel src="/images/product/marketing/dashboard-overview-marketing.png" alt="Bookeroo operator dashboard for jet ski rental operations" />
+      </div>
+      <FeatureGrid features={features} columns={3} />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

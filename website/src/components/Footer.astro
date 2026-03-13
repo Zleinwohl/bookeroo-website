@@ -1,38 +1,36 @@
 ---
 const footerLinks = {
   Product: [
+    { label: 'Operations Dashboard', href: '/product/operations-dashboard' },
     { label: 'Booking Management', href: '/product/bookings' },
     { label: 'Staff Scheduling', href: '/product/staff-scheduling' },
     { label: 'Financial Reporting', href: '/product/financials' },
-    { label: 'Operations Dashboard', href: '/product/operations-dashboard' },
+    { label: 'Product Tour', href: '/product-tour' },
   ],
-  Features: [
-    { label: 'All Features', href: '/features' },
+  Platform: [
+    { label: 'Features', href: '/features' },
     { label: 'Pricing', href: '/pricing' },
     { label: 'Book a Demo', href: '/demo' },
   ],
   Industries: [
+    { label: 'Jet Ski Rentals', href: '/industries/jet-ski-rentals' },
     { label: 'Boat Tours', href: '/industries/boat-tours' },
     { label: 'Escape Rooms', href: '/industries/escape-rooms' },
+    { label: 'Guided Tours', href: '/industries/guided-tours' },
     { label: 'Adventure Tours', href: '/industries/adventure-tours' },
-    { label: 'Jet Ski Rentals', href: '/industries/jet-ski-rentals' },
-  ],
-  Resources: [
-    { label: 'Blog', href: '/blog' },
-    { label: 'Guides', href: '/resources' },
   ],
 };
 ---
 <footer class="border-t border-zinc-800 bg-zinc-950">
   <div class="max-w-6xl mx-auto px-6 py-16">
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
       <div class="col-span-2 md:col-span-1">
         <a href="/" class="flex items-center gap-2.5 mb-4">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-content-center text-white font-bold text-sm flex items-center justify-center">B</div>
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm">B</div>
           <span class="font-semibold text-zinc-100">Bookeroo</span>
         </a>
         <p class="text-sm text-zinc-500 leading-relaxed max-w-xs">
-          The easiest platform to run your tour business.
+          The operator platform for tour and activity businesses.
         </p>
       </div>
       {Object.entries(footerLinks).map(([group, links]) => (
@@ -51,7 +49,7 @@ const footerLinks = {
       ))}
     </div>
     <div class="pt-8 border-t border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-zinc-600">© 2025 Bookeroo. All rights reserved.</p>
+      <p class="text-sm text-zinc-600">© 2026 Bookeroo. All rights reserved.</p>
       <div class="flex items-center gap-6">
         <a href="#" class="text-sm text-zinc-600 hover:text-zinc-400 transition-colors">Privacy</a>
         <a href="#" class="text-sm text-zinc-600 hover:text-zinc-400 transition-colors">Terms</a>
